@@ -53,10 +53,10 @@ public record InputType<T extends Input>(String id, MapCodec<T> codec) implement
                 typeFieldName,
                 typeGetter,
                 /*? if >1.20.4 {*/
-                codecGetter
-                /*?} else {*/
-                /*stringRepresentable -> codecGetter.apply(stringRepresentable).codec()
-                *//*?}*/
+                /*codecGetter
+                *//*?} else {*/
+                stringRepresentable -> codecGetter.apply(stringRepresentable).codec()
+                /*?}*/
         );
         MapCodec<E> eitherCodec = new StrictEitherMapCodec<>(typeFieldName, typedCodec, fuzzyCodec, false);
 

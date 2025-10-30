@@ -54,7 +54,7 @@ public class HDHapticComponent implements ECSComponent, ConfigHolder<HDHapticCom
 
     public void playHaptic(SoundEvent sound) {
         ResourceLocation location = Minecraft.getInstance().getSoundManager()
-                .getSoundEvent(/*? if >=1.21.2 {*/ sound.location() /*?} else {*/ /*sound.getLocation() *//*?}*/)
+                .getSoundEvent(/*? if >=1.21.2 {*/ /*sound.location() *//*?} else {*/ sound.getLocation() /*?}*/)
                 .getSound(randomSource).getLocation();
 
         SoundManager soundManager = Minecraft.getInstance().getSoundManager();

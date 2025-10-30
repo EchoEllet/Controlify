@@ -93,16 +93,16 @@ public abstract class KeyboardWidget<T extends KeyboardWidget.Key> extends Abstr
     public static class Key extends AbstractWidget implements ComponentProcessor, ScreenControllerEventListener {
         public static final ControlifySprite SPRITE =
                 //? if >=1.20.3 {
-                ControlifySprite.fromSpriteId(CUtil.rl("keyboard/key"));
-                //?} else {
-                /*new ControlifySprite(
+                /*ControlifySprite.fromSpriteId(CUtil.rl("keyboard/key"));
+                *///?} else {
+                new ControlifySprite(
                         CUtil.rl("textures/gui/sprites/keyboard/key.png"),
                         new SpriteScaling.NineSlice(
                                 30, 24,
                                 new SpriteScaling.NineSlice.Border(1, 1, 3, 3)
                         )
                 );
-                *///?}
+                //?}
 
         private final KeyboardWidget<?> keyboard;
 

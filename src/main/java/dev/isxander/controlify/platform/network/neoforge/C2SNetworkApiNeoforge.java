@@ -1,12 +1,12 @@
-//? if neoforge {
-/*package dev.isxander.controlify.platform.network.neoforge;
+//? if forge {
+package dev.isxander.controlify.platform.network.neoforge;
 
 import dev.isxander.controlify.platform.network.C2SNetworkApi;
 import dev.isxander.controlify.platform.network.ControlifyPacketCodec;
 import dev.isxander.controlify.platform.network.PacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModLoadingContext;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class C2SNetworkApiNeoforge implements C2SNetworkApi {
     public static final C2SNetworkApiNeoforge INSTANCE = new C2SNetworkApiNeoforge();
@@ -31,8 +31,9 @@ public class C2SNetworkApiNeoforge implements C2SNetworkApi {
         // TODO
     }
 
+    @SuppressWarnings("removal")
     private IEventBus getModEventBus() {
-        return ModLoadingContext.get().getActiveContainer().getEventBus();
+        return  FMLJavaModLoadingContext.get().getModEventBus();
     }
 }
-*///?}
+//?}

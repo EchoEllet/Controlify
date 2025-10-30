@@ -22,10 +22,10 @@ public class ClientPacketListenerMixin {
     @Unique
     private static final String inputFieldTarget =
             //? if >=1.21.2 {
-            "Lnet/minecraft/client/player/LocalPlayer;input:Lnet/minecraft/client/player/ClientInput;";
-            //?} else {
-            /*"Lnet/minecraft/client/player/LocalPlayer;input:Lnet/minecraft/client/player/Input;";
-            *///?}
+            /*"Lnet/minecraft/client/player/LocalPlayer;input:Lnet/minecraft/client/player/ClientInput;";
+            *///?} else {
+            "Lnet/minecraft/client/player/LocalPlayer;input:Lnet/minecraft/client/player/Input;";
+            //?}
 
     @Inject(
             method = "handleLogin",

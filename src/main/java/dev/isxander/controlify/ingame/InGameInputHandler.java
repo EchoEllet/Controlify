@@ -94,23 +94,23 @@ public class InGameInputHandler {
                 hotbarNextRepeatHelper.onNavigate();
 
                 //? if >=1.21.5 {
-                inventory.setSelectedSlot((inventory.getSelectedSlot() + 1) % Inventory.getSelectionSize());
-                //?} elif >=1.21.2 {
+                /*inventory.setSelectedSlot((inventory.getSelectedSlot() + 1) % Inventory.getSelectionSize());
+                *///?} elif >=1.21.2 {
                 /*inventory.setSelectedHotbarSlot((inventory.selected + 1) % Inventory.getSelectionSize());
                 *///?} else {
-                /*minecraft.player.getInventory().swapPaint(-1);
-                *///?}
+                minecraft.player.getInventory().swapPaint(-1);
+                //?}
             }
             if (hotbarPrevRepeatHelper.shouldAction(ControlifyBindings.PREV_SLOT.on(controller))) {
                 hotbarPrevRepeatHelper.onNavigate();
 
                 //? if >=1.21.5 {
-                inventory.setSelectedSlot((inventory.getSelectedSlot() - 1 + Inventory.getSelectionSize()) % Inventory.getSelectionSize());
-                //?} elif >=1.21.2 {
+                /*inventory.setSelectedSlot((inventory.getSelectedSlot() - 1 + Inventory.getSelectionSize()) % Inventory.getSelectionSize());
+                *///?} elif >=1.21.2 {
                 /*inventory.setSelectedHotbarSlot((inventory.selected - 1 + Inventory.getSelectionSize()) % Inventory.getSelectionSize());
                 *///?} else {
-                /*minecraft.player.getInventory().swapPaint(1);
-                *///?}
+                minecraft.player.getInventory().swapPaint(1);
+                //?}
             }
 
             if (!minecraft.player.isSpectator()) {
@@ -173,17 +173,17 @@ public class InGameInputHandler {
             DebugOverlayHelper.toggleFpsOverlay();
         }
         //? if >=1.20.3 {
-        if (ControlifyBindings.TOGGLE_DEBUG_MENU_NET.on(controller).justPressed()) {
+        /*if (ControlifyBindings.TOGGLE_DEBUG_MENU_NET.on(controller).justPressed()) {
             DebugOverlayHelper.toggleNetworkOverlay();
         }
         if (ControlifyBindings.TOGGLE_DEBUG_MENU_PROF.on(controller).justPressed()) {
             DebugOverlayHelper.toggleProfilerOverlay();
         }
-        //?} else {
-        /*if (ControlifyBindings.TOGGLE_DEBUG_MENU_CHARTS.on(controller).justPressed()) {
+        *///?} else {
+        if (ControlifyBindings.TOGGLE_DEBUG_MENU_CHARTS.on(controller).justPressed()) {
             DebugOverlayHelper.toggleChartsOverlay();
         }
-        *///?}
+        //?}
         if (ControlifyBindings.DEBUG_RADIAL.on(controller).justPressed()) {
             minecraft.setScreen(new RadialMenuScreen(
                     controller,
@@ -251,7 +251,7 @@ public class InGameInputHandler {
             ));
         }
 
-        if (/*? if >=1.21.5 {*/ minecraft.player.hasInfiniteMaterials() /*?} else {*/ /*this.minecraft.gameMode.hasInfiniteItems() *//*?}*/) {
+        if (/*? if >=1.21.5 {*/ /*minecraft.player.hasInfiniteMaterials() *//*?} else {*/ this.minecraft.gameMode.hasInfiniteItems() /*?}*/) {
             if (ControlifyBindings.HOTBAR_LOAD_RADIAL.on(controller).justPressed()) {
                 minecraft.setScreen(new RadialMenuScreen(
                         controller,
@@ -434,12 +434,12 @@ public class InGameInputHandler {
             double z = motion.z;
 
             //? if >=1.21.2 {
-            boolean jumping = player.input.keyPresses.jump();
+            /*boolean jumping = player.input.keyPresses.jump();
             boolean shiftKeyDown = player.input.keyPresses.shift();
-            //?} else {
-            /*boolean jumping = player.input.jumping;
+            *///?} else {
+            boolean jumping = player.input.jumping;
             boolean shiftKeyDown = player.input.shiftKeyDown;
-            *///?}
+            //?}
 
             if (!jumping)
                 y = Math.min(y, 0);
@@ -474,15 +474,15 @@ public class InGameInputHandler {
 
     public static Vec2 getMoveVec(
             //? if >=1.21.2 {
-            net.minecraft.client.player.ClientInput input
-            //?} else {
-            /*net.minecraft.client.player.Input input
-            *///?}
+            /*net.minecraft.client.player.ClientInput input
+            *///?} else {
+            net.minecraft.client.player.Input input
+            //?}
     ) {
         //? if >=1.21.5 {
-        return input.getMoveVector();
-        //?} else {
-        /*return new Vec2(input.leftImpulse, input.forwardImpulse);
-        *///?}
+        /*return input.getMoveVector();
+        *///?} else {
+        return new Vec2(input.leftImpulse, input.forwardImpulse);
+        //?}
     }
 }

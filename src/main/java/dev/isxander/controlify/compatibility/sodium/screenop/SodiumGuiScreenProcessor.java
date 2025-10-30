@@ -1,4 +1,3 @@
-//? if sodium {
 package dev.isxander.controlify.compatibility.sodium.screenop;
 
 import dev.isxander.controlify.api.buttonguide.ButtonGuideApi;
@@ -64,8 +63,7 @@ public class SodiumGuiScreenProcessor extends ScreenProcessor<Screen> {
                 ControlifyBindings.GUI_BACK,
                 ButtonGuidePredicate.always()
         );
-        
+
         super.onWidgetRebuild();
     }
 }
-//?}

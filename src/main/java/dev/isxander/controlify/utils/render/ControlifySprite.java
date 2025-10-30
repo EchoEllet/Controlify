@@ -1,10 +1,10 @@
 package dev.isxander.controlify.utils.render;
 
 //? if >=1.20.3 {
-import net.minecraft.client.gui.GuiSpriteManager;
+/*import net.minecraft.client.gui.GuiSpriteManager;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.metadata.gui.GuiSpriteScaling;
-//?}
+*///?}
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
@@ -26,7 +26,7 @@ public record ControlifySprite(ResourceLocation atlas, SpriteScaling scaling, fl
     }
 
     //? if >=1.20.3 {
-    public ControlifySprite(
+    /*public ControlifySprite(
             TextureAtlasSprite sprite,
             GuiSpriteScaling scaling
     ) {
@@ -59,9 +59,9 @@ public record ControlifySprite(ResourceLocation atlas, SpriteScaling scaling, fl
             );
         throw new IllegalArgumentException("Unknown scaling");
     }
-    //?} else {
-    /*public ControlifySprite(ResourceLocation atlas, SpriteScaling scaling) {
+    *///?} else {
+    public ControlifySprite(ResourceLocation atlas, SpriteScaling scaling) {
         this(atlas, scaling, 0, 1, 0, 1);
     }
-    *///?}
+    //?}
 }

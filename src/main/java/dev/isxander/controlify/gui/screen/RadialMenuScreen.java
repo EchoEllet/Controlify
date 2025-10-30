@@ -191,10 +191,10 @@ public class RadialMenuScreen extends Screen implements ScreenControllerEventLis
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
         if (editMode != null) {
             /*? if >1.20.4 {*/
-            renderBackground(graphics, mouseX, mouseY, delta);
-            /*?} else {*/
-            /*renderDirtBackground(graphics);
-            *//*?}*/
+            /*renderBackground(graphics, mouseX, mouseY, delta);
+            *//*?} else {*/
+            renderDirtBackground(graphics);
+            /*?}*/
         }
 
         super.render(graphics, mouseX, mouseY, delta);

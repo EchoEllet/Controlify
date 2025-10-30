@@ -1,0 +1,230 @@
+plugins {
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+    withSourcesJar()
+}
+
+// Must be before the "minecraft" block: https://docs.minecraftforge.net/en/fg-5.x/dependencies/jarinjar/#jar-in-jar
+jarJar.enable()
+
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+
+    copyIdeResources = true
+
+
+    runs {
+        // applies to all the run configs below
+        configureEach {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+
+        server {
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
+        }
+
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+
+        data {
+            workingDirectory project.file('run-data')
+
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    maven {
+        url("https://maven.isxander.dev/releases")
+    }
+    maven {
+        url("https://maven.quiltmc.org/repository/release")
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        forRepositories(fg.repository)
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
+dependencies {
+
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    compileOnly("io.github.llamalad7:mixinextras-common:${project.property('deps.mixinExtras')}")
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:${project.property('deps.mixinExtras')}")) {
+        jarJar.ranged(it, "[${project.property('deps.mixinExtras')},)")
+    }
+
+    compileOnly fg.deobf("maven.modrinth:fancymenu:3.7.0-1.20.1-forge")
+    compileOnly fg.deobf("maven.modrinth:simple-voice-chat:forge-1.20.1-2.6.6")
+    implementation fg.deobf("maven.modrinth:yacl:3.6.6+1.20.1-forge")
+
+    // Bundles these dependencies in the JAR file (https://docs.minecraftforge.net/en/fg-5.x/dependencies/#non-minecraft-dependencies)
+    minecraftLibrary(jarJar("dev.isxander:libsdl4j:${project.property('deps.sdl3Target')}-${project.property('deps.sdl34jBuild')}")) {
+        jarJar.ranged(it, "[${project.property('deps.sdl3Target')}-${project.property('deps.sdl34jBuild')},)")
+    }
+    minecraftLibrary(jarJar("dev.isxander:steamdeck4j:${project.property('deps.steamdeck4j')}")) {
+        jarJar.ranged(it, "[${project.property('deps.steamdeck4j')},)")
+    }
+    minecraftLibrary(jarJar(("org.hid4java:hid4java:${project.property('deps.hid4java')}"))) {
+        jarJar.ranged(it, "[${project.property('deps.hid4java')},)")
+    }
+    minecraftLibrary(jarJar("org.jetbrains:annotations:24.0.0")) {
+        jarJar.ranged(it, "[24.0.0,)")
+    }
+
+    implementation "org.quiltmc.parsers:json:${project.property('deps.quiltparsers')}"
+
+    implementation fg.deobf("maven.modrinth:embeddium:0.3.31+mc1.20.1")
+    implementation fg.deobf("maven.modrinth:oculus:1.20.1-1.8.0")
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version       : forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors         : mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+// Example for how to get properties into the manifest for reading at runtime.
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1', // We are version 1 of ourselves
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+
+    // This is the preferred method to reobfuscate your jar file
+    finalizedBy 'reobfJar'
+}
+
+// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing:
+// tasks.named('publish').configure {
+//     dependsOn 'reobfJar'
+// }
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
+
+    config "${mod_id}.mixins.json"
+    config "${mod_id}-platform.forge.mixins.json"
+}
+
+// Copy-paste from: https://github.com/isXander/Controlify/blob/multiversion/dev/build.gradle.kts#L130-L187
+// but with quick migration to MinecraftForge & Gradle Groovy
+/*
+START
+Include native libraries for SDL3 in the jar.
+ */
+def nativeTargets = [
+        [classifier: "linux-aarch64", fileExt: "so", jnaPrefix: "linux-aarch64/", fileName: "libSDL3", configName: "offlineNativeLinuxAarch64"],
+        [classifier: "linux-x86_64", fileExt: "so", jnaPrefix: "linux-x86-64/", fileName: "libSDL3", configName: "offlineNativeLinuxX86_64"],
+        [classifier: "macos-aarch64", fileExt: "dylib", jnaPrefix: "darwin-aarch64/", fileName: "libSDL3", configName: "offlineNativeMacArm"],
+        [classifier: "macos-x86_64", fileExt: "dylib", jnaPrefix: "darwin-x86-64/", fileName: "libSDL3", configName: "offlineNativeMacIntel"],
+        [classifier: "windows-x86_64", fileExt: "dll", jnaPrefix: "win32-x86-64/", fileName: "SDL3", configName: "offlineNativeWinX86_64"]
+]
+
+nativeTargets.each { configurations.create(it.configName) }
+configurations.create("nativeHashes")
+
+dependencies {
+    nativeTargets.each {
+        def sdl3Target = project.property("deps.sdl3Target")
+        "${it.configName}" "dev.isxander:libsdl4j-natives:${sdl3Target}:${it.classifier}@${it.fileExt}"
+        nativeHashes "dev.isxander:libsdl4j-natives:${sdl3Target}:${it.classifier}@${it.fileExt}.md5"
+    }
+}
+
+task prepareNativeResources(type: Sync) {
+    group = "controlify/internal"
+    into "$buildDir/generated-resources/sdl-natives"
+
+    nativeTargets.each { t ->
+        from(configurations[t.configName]) { into t.jnaPrefix; rename { "${t.fileName}.${t.fileExt}" } }
+    }
+
+    from(configurations.nativeHashes) { into "sdl3-hashes/" }
+}
+
+processResources.from(prepareNativeResources)
+processResources.dependsOn prepareNativeResources
+/*
+END
+Include native libraries for SDL3 in the jar.
+ */
+

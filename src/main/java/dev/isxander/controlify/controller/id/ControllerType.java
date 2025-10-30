@@ -21,10 +21,10 @@ public record ControllerType(@Nullable String friendlyName, String mappingId, Re
 
     public ResourceLocation getIconSprite() {
         /*? if >=1.20.3 {*/
-        return namespace.withPrefix("controllers/");
-        /*?} else {*/
-        /*return namespace.withPath("textures/gui/sprites/controllers/" + namespace.getPath() + ".png");
-        *//*?}*/
+        /*return namespace.withPrefix("controllers/");
+        *//*?} else {*/
+        return namespace.withPath("textures/gui/sprites/controllers/" + namespace.getPath() + ".png");
+        /*?}*/
 
     }
 

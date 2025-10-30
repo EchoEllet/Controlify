@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public interface ControlifyPacketCodec<T>
     //? if >=1.20.5
-    extends net.minecraft.network.codec.StreamCodec<FriendlyByteBuf, T>
+    /*extends net.minecraft.network.codec.StreamCodec<FriendlyByteBuf, T>*/
 {
     static <T> ControlifyPacketCodec<T> of(BiConsumer<FriendlyByteBuf, T> encoder, Function<FriendlyByteBuf, T> decoder) {
         return new ControlifyPacketCodec<>() {

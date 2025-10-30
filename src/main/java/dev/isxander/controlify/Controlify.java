@@ -580,7 +580,7 @@ public class Controlify implements ControlifyApi {
                 || state.getHats().stream().map(state::getHatState).anyMatch(hat -> hat != HatState.CENTERED);
         if (givingInput) {
             //? if >=1.21.2
-            minecraft.getFramerateLimitTracker().onInputReceived();
+            /*minecraft.getFramerateLimitTracker().onInputReceived();*/
 
             if (!this.currentInputMode().isController()) {
                 this.setInputMode(input.confObj().mixedInput ? InputMode.MIXED : InputMode.CONTROLLER);

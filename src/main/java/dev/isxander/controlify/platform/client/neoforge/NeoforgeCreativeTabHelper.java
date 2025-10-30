@@ -1,11 +1,10 @@
-//? if neoforge {
-/*package dev.isxander.controlify.platform.client.neoforge;
+package dev.isxander.controlify.platform.client.neoforge;
 
 import dev.isxander.controlify.platform.client.CreativeTabHelper;
-import dev.isxander.controlify.platform.neoforge.mixins.CreativeModeInventoryScreenAccessor;
+import dev.isxander.controlify.platform.forge.mixins.CreativeModeInventoryScreenAccessor;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.world.item.CreativeModeTab;
-import net.neoforged.neoforge.client.gui.CreativeTabsScreenPage;
+import net.minecraftforge.client.gui.CreativeTabsScreenPage;
 
 import java.util.List;
 
@@ -50,4 +49,4 @@ public class NeoforgeCreativeTabHelper implements CreativeTabHelper {
         return ((CreativeModeInventoryScreenAccessor) screen).getPages();
     }
 }
-*///?}
+//?}

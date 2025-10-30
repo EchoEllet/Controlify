@@ -22,10 +22,10 @@ public class ClientPacketListenerMixin {
             at = @At(
                     value = "FIELD",
                     //? if >=1.21.2 {
-                    target = "Lnet/minecraft/client/player/LocalPlayer;input:Lnet/minecraft/client/player/ClientInput;",
-                    //?} else {
-                    /*target = "Lnet/minecraft/client/player/LocalPlayer;input:Lnet/minecraft/client/player/Input;",
-                    *///?}
+                    /*target = "Lnet/minecraft/client/player/LocalPlayer;input:Lnet/minecraft/client/player/ClientInput;",
+                    *///?} else {
+                    target = "Lnet/minecraft/client/player/LocalPlayer;input:Lnet/minecraft/client/player/Input;",
+                    //?}
                     opcode = Opcodes.ASTORE,
                     shift = At.Shift.AFTER
             )

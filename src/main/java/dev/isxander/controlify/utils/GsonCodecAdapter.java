@@ -16,19 +16,19 @@ public record GsonCodecAdapter<T>(Codec<T> codec) implements JsonSerializer<T>, 
     public JsonElement serialize(T src, Type typeOfSrc, JsonSerializationContext context) {
         return codec.encodeStart(JsonOps.INSTANCE, src)
                 //? if >=1.20.6 {
-                .getOrThrow();
-                //?} else {
-                /*.get().orThrow();
-                *///?}
+                /*.getOrThrow();
+                *///?} else {
+                .get().orThrow();
+                //?}
     }
 
     @Override
     public T deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         return codec.parse(JsonOps.INSTANCE, json)
                 //? if >=1.20.6 {
-                .getOrThrow();
-                //?} else {
-                /*.get().orThrow();
-                *///?}
+                /*.getOrThrow();
+                *///?} else {
+                .get().orThrow();
+                //?}
     }
 }

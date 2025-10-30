@@ -24,9 +24,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 //? if >=1.21.2 {
-import net.minecraft.client.gui.ItemSlotMouseAction;
+/*import net.minecraft.client.gui.ItemSlotMouseAction;
 import dev.isxander.controlify.screenop.compat.vanilla.ItemSlotControllerAction;
-//?}
+*///?}
 
 @Mixin(AbstractContainerScreen.class)
 public abstract class AbstractContainerScreenMixin implements ScreenProcessorProvider {
@@ -35,7 +35,7 @@ public abstract class AbstractContainerScreenMixin implements ScreenProcessorPro
     @Shadow protected abstract void slotClicked(Slot slot, int slotId, int button, ClickType actionType);
 
     //? if >=1.21.2
-    @Shadow @Final private List<ItemSlotMouseAction> itemSlotMouseActions;
+    /*@Shadow @Final private List<ItemSlotMouseAction> itemSlotMouseActions;*/
 
     @Unique
     protected AbstractContainerScreenProcessor<?> screenProcessor = new AbstractContainerScreenProcessor<>(
@@ -70,19 +70,19 @@ public abstract class AbstractContainerScreenMixin implements ScreenProcessorPro
     @Unique
     protected boolean handleControllerItemSlotActions(ControllerEntity controller) {
         //? if >=1.21.2 {
-        for (ItemSlotMouseAction itemSlotMouseAction : this.itemSlotMouseActions) {
+        /*for (ItemSlotMouseAction itemSlotMouseAction : this.itemSlotMouseActions) {
             if (itemSlotMouseAction instanceof ItemSlotControllerAction itemSlotControllerAction
                     && itemSlotMouseAction.matches(this.hoveredSlot)
                     && itemSlotControllerAction.controlify$onControllerInput(this.hoveredSlot.getItem(), this.hoveredSlot.index, controller)) {
                 return true;
             }
         }
-        //?}
+        *///?}
         return false;
     }
 
     //? if >=1.21.2 {
-    @ModifyExpressionValue(
+    /*@ModifyExpressionValue(
             method = "mouseScrolled",
             at = @At(
                     value = "INVOKE",
@@ -92,5 +92,5 @@ public abstract class AbstractContainerScreenMixin implements ScreenProcessorPro
     private boolean allowItemSlotScrolling(boolean original) {
         return original && !Controlify.instance().currentInputMode().isController();
     }
-    //?}
+    *///?}
 }

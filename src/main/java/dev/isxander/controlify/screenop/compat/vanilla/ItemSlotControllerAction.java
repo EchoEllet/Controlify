@@ -1,5 +1,5 @@
 //? if >=1.21.2 {
-package dev.isxander.controlify.screenop.compat.vanilla;
+/*package dev.isxander.controlify.screenop.compat.vanilla;
 
 import dev.isxander.controlify.controller.ControllerEntity;
 import net.minecraft.client.gui.ItemSlotMouseAction;
@@ -12,4 +12,4 @@ public interface ItemSlotControllerAction extends ItemSlotMouseAction {
             ControllerEntity controller
     );
 }
-//?}
+*///?}

@@ -10,13 +10,13 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.phys.Vec2;
 import org.jetbrains.annotations.Nullable;
 //? if >=1.21.2 {
-import net.minecraft.client.player.ClientInput;
+/*import net.minecraft.client.player.ClientInput;
 import net.minecraft.world.entity.player.Input;
-//?} else {
-/*import net.minecraft.client.player.Input;
-*///?}
+*///?} else {
+import net.minecraft.client.player.Input;
+//?}
 
-public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ ClientInput /*?} else {*/ /*Input *//*?}*/ {
+public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ /*ClientInput *//*?} else {*/ Input /*?}*/ {
     private final ControllerEntity controller;
     private final LocalPlayer player;
     private boolean wasFlying, wasPassenger;
@@ -28,23 +28,23 @@ public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ ClientInput /*
 
     @Override
     //? if >=1.21.4 {
-    public void tick() {
-    //?} else {
-    /*public void tick(boolean slowDown, float movementMultiplier) {
-    *///?}
+    /*public void tick() {
+    *///?} else {
+    public void tick(boolean slowDown, float movementMultiplier) {
+    //?}
         if (Minecraft.getInstance().screen != null || player == null) {
             this.setMoveVec(0, 0);
 
             //? if >=1.21.2 {
-            this.keyPresses = Input.EMPTY;
-            //?} else {
-            /*this.up = false;
+            /*this.keyPresses = Input.EMPTY;
+            *///?} else {
+            this.up = false;
             this.down = false;
             this.left = false;
             this.right = false;
             this.jumping = false;
             this.shiftKeyDown = false;
-            *///?}
+            //?}
 
             return;
         }
@@ -62,10 +62,10 @@ public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ ClientInput /*
         }
 
         //? if >=1.21.2 {
-        boolean up, down, left, right;
+        /*boolean up, down, left, right;
         boolean shiftKeyDown = keyPresses.shift();
         boolean jumping = keyPresses.jump();
-        //?}
+        *///?}
 
         up = forwardImpulse > 0;
         down = forwardImpulse < 0;
@@ -74,11 +74,11 @@ public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ ClientInput /*
 
         //? if >=1.21.4 {
         //?} else {
-        /*if (slowDown) {
+        if (slowDown) {
             leftImpulse *= movementMultiplier;
             forwardImpulse *= movementMultiplier;
         }
-        *///?}
+        //?}
         this.setMoveVec(forwardImpulse, leftImpulse);
 
         // this over-complication is so exiting a GUI with the button still held doesn't trigger a jump.
@@ -104,10 +104,10 @@ public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ ClientInput /*
         }
 
         //? if >=1.21.2 {
-        boolean sprinting = ControlifyBindings.SPRINT.on(controller).digitalNow();
+        /*boolean sprinting = ControlifyBindings.SPRINT.on(controller).digitalNow();
 
         this.keyPresses = new Input(up, down, left, right, jumping, shiftKeyDown, sprinting);
-        //?}
+        *///?}
 
         this.wasFlying = player.getAbilities().flying;
         this.wasPassenger = player.isPassenger();
@@ -115,24 +115,24 @@ public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ ClientInput /*
 
     private void setMoveVec(float forward, float left) {
         //? if >=1.21.5 {
-        /*
+        /*/^
         Starting 25w02a, movement vector is normalised (length set to 1). This won't work in analogue input, as
         it would mean you wouldn't be able to move any slower than full speed. So instead, Controlify *limits* the
         vector length to 1, but doesn't normalise it.
         With regular thumb-sticks, circularity is already a thing,
         so this won't actually make any difference for most people.
         But custom joystick configurations may produce irregular results, hence this is necessary.
-         */
+         ^/
         this.moveVector = new Vec2(left, forward);
         float length = this.moveVector.length();
         if (length > 1) {
             this.moveVector = this.moveVector.scale(1f / length);
         }
 
-        //?} else {
-        /*this.forwardImpulse = forward;
+        *///?} else {
+        this.forwardImpulse = forward;
         this.leftImpulse = left;
-        *///?}
+        //?}
     }
 
     public static void updatePlayerInput(@Nullable LocalPlayer player) {

@@ -12,13 +12,13 @@ import java.util.function.Consumer;
 public final class Blit {
     public static void drawManaged(GuiGraphics graphics, Consumer<MultiBufferSource> consumer) {
         //? if >=1.21.2 {
-        graphics.drawSpecial(consumer);
-        //?} else {
-        /*// noinspection deprecation
+        /*graphics.drawSpecial(consumer);
+        *///?} else {
+        // noinspection deprecation
         graphics.drawManaged(() -> {
             consumer.accept(graphics.bufferSource());
         });
-        *///?}
+        //?}
     }
 
     public static void blitTex(
@@ -30,11 +30,11 @@ public final class Blit {
             int textureWidth, int textureHeight
     ) {
         //? if <1.21.2
-        /*RenderSystem.enableBlend();*/ // maintain parity with guiTextured render type that enables blending
+        RenderSystem.enableBlend(); // maintain parity with guiTextured render type that enables blending
 
         graphics.blit(
                 //? if >=1.21.2
-                RenderType::guiTextured,
+                /*RenderType::guiTextured,*/
                 texture,
                 x, y,
                 u, v,
@@ -43,7 +43,7 @@ public final class Blit {
         );
 
         //? if <1.21.2
-        /*RenderSystem.disableBlend();*/
+        RenderSystem.disableBlend();
     }
 
     public static void blitTex(
@@ -55,11 +55,11 @@ public final class Blit {
             int atlasWidth, int atlasHeight
     ) {
         //? if <1.21.2
-        /*RenderSystem.enableBlend();*/ // maintain parity with guiTextured render type that enables blending
+        RenderSystem.enableBlend(); // maintain parity with guiTextured render type that enables blending
 
         graphics.blit(
                 //? if >=1.21.2
-                RenderType::guiTextured,
+                /*RenderType::guiTextured,*/
                 atlasLocation,
                 x, y,
                 textureX, textureY,
@@ -68,7 +68,7 @@ public final class Blit {
         );
 
         //? if <1.21.2
-        /*RenderSystem.disableBlend();*/
+        RenderSystem.disableBlend();
     }
 
     public static void blitTex(
@@ -81,33 +81,33 @@ public final class Blit {
             int color
     ) {
         //? <1.21.2 {
-        /*float[] argb = ColorUtils.decomposeARGBFloat(color);
+        float[] argb = ColorUtils.decomposeARGBFloat(color);
         graphics.setColor(argb[1], argb[2], argb[3], argb[0]);
 
         RenderSystem.enableBlend(); // maintain parity with guiTextured render type that enables blending
-        *///?}
+        //?}
 
         graphics.blit(
                 //? if >=1.21.2
-                RenderType::guiTextured,
+                /*RenderType::guiTextured,*/
                 texture,
                 x, y,
                 u, v,
                 width, height,
                 textureWidth, textureHeight
                 //? if >=1.21.2
-                ,color
+                /*,color*/
         );
 
         //? <1.21.2 {
-        /*RenderSystem.disableBlend();
+        RenderSystem.disableBlend();
 
         graphics.setColor(1, 1, 1, 1);
-        *///?}
+        //?}
     }
 
     //? if >=1.20.3 {
-    public static void blitSprite(
+    /*public static void blitSprite(
             GuiGraphics graphics,
             ResourceLocation sprite,
             int x, int y,
@@ -115,7 +115,7 @@ public final class Blit {
     ) {
         graphics.blitSprite(
                 //? if >=1.21.2
-                RenderType::guiTextured,
+                /^RenderType::guiTextured,^/
                 sprite,
                 x, y,
                 width, height
@@ -132,7 +132,7 @@ public final class Blit {
     ) {
         graphics.blitSprite(
                 //? if >=1.21.2
-                RenderType::guiTextured,
+                /^RenderType::guiTextured,^/
                 sprite,
                 textureWidth, textureHeight,
                 u, v,
@@ -140,7 +140,7 @@ public final class Blit {
                 width, height
         );
     }
-    //?}
+    *///?}
 
     public static void blitSprite(
             GuiGraphics graphics,
@@ -150,21 +150,21 @@ public final class Blit {
             int color
     ) {
         //? if >=1.21.2 {
-        graphics.blitSprite(
+        /*graphics.blitSprite(
                 RenderType::guiTextured,
                 sprite,
                 x, y,
                 width, height,
                 color
         );
-        //?} else {
-        /*float[] argb = ColorUtils.decomposeARGBFloat(color);
+        *///?} else {
+        float[] argb = ColorUtils.decomposeARGBFloat(color);
         graphics.blit(
                 x, y, 0,
                 width, height,
                 sprite,
                 argb[1], argb[2], argb[3], argb[0]
         );
-        *///?}
+        //?}
     }
 }

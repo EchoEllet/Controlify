@@ -1,5 +1,5 @@
 //? if fabric {
-package dev.isxander.controlify.platform.client.fabric;
+/*package dev.isxander.controlify.platform.client.fabric;
 
 import dev.isxander.controlify.platform.client.CreativeTabHelper;
 import dev.isxander.controlify.platform.client.PlatformClientUtilImpl;
@@ -32,11 +32,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 //? if >=1.21.5 {
-import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
+/^import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
-//?} else {
-/*import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-*///?}
+^///?} else {
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+//?}
 
 public class FabricPlatformClientImpl implements PlatformClientUtilImpl {
     @Override
@@ -88,12 +88,12 @@ public class FabricPlatformClientImpl implements PlatformClientUtilImpl {
     @Override
     public void addHudLayer(ResourceLocation id, RenderLayer renderLayer) {
         //? if >=1.21.5 {
-        HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> {
+        /^HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> {
             layeredDrawer.addLayer(IdentifiedLayer.of(id, renderLayer));
         });
-        //?} else {
-        /*HudRenderCallback.EVENT.register(renderLayer::render);
-        *///?}
+        ^///?} else {
+        HudRenderCallback.EVENT.register(renderLayer::render);
+        //?}
     }
 
     @Override
@@ -117,10 +117,10 @@ public class FabricPlatformClientImpl implements PlatformClientUtilImpl {
     @Override
     public CreativeTabHelper createCreativeTabHelper(CreativeModeInventoryScreen creativeScreen) {
         //? fapi: >=0.100.0 {
-        return new FAPIApiCreativeTabHelper(creativeScreen);
-        //?} else {
-        /*return new FAPIImplCreativeTabHelper(creativeScreen);
-        *///?}
+        /^return new FAPIApiCreativeTabHelper(creativeScreen);
+        ^///?} else {
+        return new FAPIImplCreativeTabHelper(creativeScreen);
+        //?}
     }
 }
-//?}
+*///?}

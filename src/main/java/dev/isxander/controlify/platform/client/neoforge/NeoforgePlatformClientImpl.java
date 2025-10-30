@@ -1,5 +1,5 @@
-//? if neoforge {
-/*package dev.isxander.controlify.platform.client.neoforge;
+
+package dev.isxander.controlify.platform.client.neoforge;
 
 import dev.isxander.controlify.platform.client.CreativeTabHelper;
 import dev.isxander.controlify.platform.client.PlatformClientUtilImpl;
@@ -11,7 +11,6 @@ import dev.isxander.controlify.platform.client.resource.ControlifyReloadListener
 import dev.isxander.controlify.platform.client.util.RenderLayer;
 import dev.isxander.controlify.platform.neoforge.VanillaKeyMappingHolder;
 import dev.isxander.controlify.platform.network.ControlifyPacketCodec;
-import net.minecraft.SharedConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
@@ -23,15 +22,17 @@ import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.BuiltInPackSource;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
-import net.minecraft.server.packs.repository.RepositorySource;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.ModLoadingContext;
-import net.neoforged.neoforge.client.event.*;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.AddPackFindersEvent;
-import net.neoforged.neoforge.event.GameShuttingDownEvent;
-import net.neoforged.neoforgespi.language.IModInfo;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.event.GameShuttingDownEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forgespi.language.IModInfo;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;
@@ -45,13 +46,9 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
 
     @Override
     public void registerClientTickStarted(TickEvent event) {
-        //? if >=1.20.6 {
-        NeoForge.EVENT_BUS.<ClientTickEvent.Pre>addListener(e -> {
-        //?} else {
-        /^NeoForge.EVENT_BUS.<net.neoforged.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
-            if (e.phase != net.neoforged.neoforge.event.TickEvent.Phase.START)
+        MinecraftForge.EVENT_BUS.<net.minecraftforge.event.TickEvent.ClientTickEvent>addListener(e -> {
+            if (e.phase != net.minecraftforge.event.TickEvent.Phase.START)
                 return;
-        ^///?}
             event.onTick(Minecraft.getInstance());
         });
     }
@@ -59,26 +56,25 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
     @Override
     public void registerClientTickEnded(TickEvent event) {
         //? if >=1.20.6 {
-        NeoForge.EVENT_BUS.<ClientTickEvent.Pre>addListener(e -> {
-        //?} else {
-        /^NeoForge.EVENT_BUS.<net.neoforged.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
-            if (e.phase != net.neoforged.neoforge.event.TickEvent.Phase.END)
+        /*NeoForge.EVENT_BUS.<ClientTickEvent.Pre>addListener(e -> {
+         *///?} else {
+        MinecraftForge.EVENT_BUS.<net.minecraftforge.event.TickEvent.ClientTickEvent>addListener(e -> {
+            if (e.phase != net.minecraftforge.event.TickEvent.Phase.END)
                 return;
-        ^///?}
             event.onTick(Minecraft.getInstance());
         });
     }
 
     @Override
     public void registerClientStopping(LifecycleEvent event) {
-        NeoForge.EVENT_BUS.<GameShuttingDownEvent>addListener(e -> {
+        MinecraftForge.EVENT_BUS.<GameShuttingDownEvent>addListener(e -> {
             event.onLifecycle(Minecraft.getInstance());
         });
     }
 
     @Override
     public void registerClientDisconnected(DisconnectedEvent event) {
-        NeoForge.EVENT_BUS.<ClientPlayerNetworkEvent.LoggingOut>addListener(e -> {
+        MinecraftForge.EVENT_BUS.<ClientPlayerNetworkEvent.LoggingOut>addListener(e -> {
             event.onDisconnected(Minecraft.getInstance());
         });
     }
@@ -86,14 +82,14 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
     @Override
     public void registerAssetReloadListener(ControlifyReloadListener reloadListener) {
         //? if >=1.21.4 {
-        getModEventBus().<AddClientReloadListenersEvent>addListener(e -> {
+        /*getModEventBus().<AddClientReloadListenersEvent>addListener(e -> {
             e.addListener(reloadListener.getReloadId(), reloadListener);
         });
-        //?} else {
-        /^getModEventBus().<RegisterClientReloadListenersEvent>addListener(e -> {
+        *///?} else {
+        getModEventBus().<RegisterClientReloadListenersEvent>addListener(e -> {
             e.registerReloadListener(reloadListener);
         });
-        ^///?}
+        //?}
     }
 
     @Override
@@ -102,7 +98,7 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
 
         getModEventBus().<AddPackFindersEvent>addListener(e -> {
             //? if >=1.20.6 {
-            e.addPackFinders(
+            /*e.addPackFinders(
                     packLocation,
                     PackType.CLIENT_RESOURCES,
                     displayName,
@@ -110,39 +106,33 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
                     false,
                     Pack.Position.TOP
             );
-            //?} else {
-            /^IModInfo modInfo = ModList.get().getModContainerById(packLocation.getNamespace()).orElseThrow().getModInfo();
+            *///?} else {
+            IModInfo modInfo = ModList.get().getModContainerById(packLocation.getNamespace()).orElseThrow().getModInfo();
             Path resourcePath = modInfo.getOwningFile().getFile().findResource(packLocation.getPath());
 
-            Pack pack = Pack.readMetaAndCreate(
-                    packLocation.toString(),
-                    displayName,
-                    true,
-                    BuiltInPackSource.fromName((path) -> new PathPackResources(path, resourcePath, true)),
-                    PackType.CLIENT_RESOURCES,
-                    Pack.Position.BOTTOM,
-                    PackSource.BUILT_IN
-            );
-            e.addRepositorySource(consumer -> consumer.accept(pack));
-            ^///?}
+            // TODO: (PORT) To save development time, built-in packs are unsupported for now
+//            Pack pack = Pack.readMetaAndCreate(
+//                    packLocation.toString(),
+//                    displayName,
+//                    true,
+//                    BuiltInPackSource.fromName((path) -> new PathPackResources(path, resourcePath, true)),
+//                    PackType.CLIENT_RESOURCES,
+//                    Pack.Position.BOTTOM,
+//                    PackSource.BUILT_IN
+//            );
+//            e.addRepositorySource(consumer -> consumer.accept(pack));
+            //?}
         });
     }
 
     @Override
     public void addHudLayer(ResourceLocation id, RenderLayer renderLayer) {
-        getModEventBus().addListener(
-                //? if >1.20.4 {
-                RegisterGuiLayersEvent.class,
-                //?} else {
-                /^RegisterGuiOverlaysEvent.class,
-                ^///?}
-                e -> e.registerAboveAll(id, renderLayer)
-        );
+        getModEventBus().addListener((RegisterGuiOverlaysEvent event) -> event.registerAboveAll(id.getPath(), renderLayer));
     }
 
     @Override
     public void registerPostScreenRender(ScreenRenderEvent event) {
-        NeoForge.EVENT_BUS.<ScreenEvent.Render.Post>addListener(e -> {
+        MinecraftForge.EVENT_BUS.<ScreenEvent.Render.Post>addListener(e -> {
             event.onRender(e.getScreen(), e.getGuiGraphics(), e.getMouseX(), e.getMouseY(), e.getPartialTick());
         });
     }
@@ -175,7 +165,7 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
     }
 
     private IEventBus getModEventBus() {
-        return ModLoadingContext.get().getActiveContainer().getEventBus();
+        return FMLJavaModLoadingContext.get().getModEventBus();
     }
 }
-*///?}
+

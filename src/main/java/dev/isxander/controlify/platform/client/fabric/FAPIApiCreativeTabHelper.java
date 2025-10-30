@@ -1,5 +1,5 @@
 //? if fabric && fapi: >=0.100.0 {
-package dev.isxander.controlify.platform.client.fabric;
+/*package dev.isxander.controlify.platform.client.fabric;
 
 import dev.isxander.controlify.platform.client.CreativeTabHelper;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
@@ -44,4 +44,4 @@ public class FAPIApiCreativeTabHelper implements CreativeTabHelper {
         screen.setSelectedItemGroup(tab);
     }
 }
-//?}
+*///?}

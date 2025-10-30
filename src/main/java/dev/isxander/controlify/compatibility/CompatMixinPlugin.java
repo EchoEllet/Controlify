@@ -1,5 +1,6 @@
 package dev.isxander.controlify.compatibility;
 
+import net.minecraftforge.fml.loading.LoadingModList;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -11,11 +12,7 @@ public abstract class CompatMixinPlugin implements IMixinConfigPlugin {
     private final boolean compatEnabled;
 
     protected CompatMixinPlugin() {
-        //? if fabric {
-        this.compatEnabled = net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(this.getModId());
-        //?} elif neoforge {
-        /*this.compatEnabled = net.neoforged.fml.loading.LoadingModList.get().getModFileById(this.getModId()) != null;
-        *///?}
+        this.compatEnabled = LoadingModList.get().getModFileById(this.getModId()) != null;
     }
 
     public abstract String getModId();

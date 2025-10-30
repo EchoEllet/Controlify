@@ -1,4 +1,4 @@
-/*? if sodium {*/
+
 package dev.isxander.controlify.compatibility.sodium.mixins;
 
 import dev.isxander.controlify.compatibility.sodium.SodiumCompat;
@@ -11,9 +11,11 @@ import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(targets = SodiumCompat.SODIUM_PACKAGE + ".client.gui.options.control.CyclingControl$CyclingControlElement", remap = false)
 public abstract class CycleControlElementMixin implements ComponentProcessorProvider {
-    @Shadow public abstract void cycleControl(boolean reverse);
+    @Shadow
+    public abstract void cycleControl(boolean reverse);
 
-    @Unique private final ComponentProcessor controlify$componentProcessor
+    @Unique
+    private final ComponentProcessor controlify$componentProcessor
             = new CycleControlProcessor(this::cycleControl);
 
     @Override
@@ -21,4 +23,3 @@ public abstract class CycleControlElementMixin implements ComponentProcessorProv
         return controlify$componentProcessor;
     }
 }
-/*?}*/

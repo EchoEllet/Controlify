@@ -30,8 +30,8 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 //? if >=1.21.2 {
-import net.minecraft.world.item.BundleItem;
-//?}
+/*import net.minecraft.world.item.BundleItem;
+*///?}
 
 public class AbstractContainerScreenProcessor<T extends AbstractContainerScreen<?>> extends ScreenProcessor<T> {
     private PositionedComponent<ColumnLayoutComponent<RowLayoutComponent<GuideActionRenderer<ContainerGuideCtx>>>> leftLayout;
@@ -196,9 +196,9 @@ public class AbstractContainerScreenProcessor<T extends AbstractContainerScreen<
                                 .element(new GuideActionRenderer<>(
                                         new GuideAction<>(ControlifyBindings.INV_TAKE_HALF.on(controller), ctx -> {
                                             //? if >=1.21.2 {
-                                            if (ctx.hoveredSlot() != null && ctx.hoveredSlot().getItem().is(ItemTags.BUNDLES) && ctx.holdingItem().isEmpty() && BundleItem.getSelectedItem(ctx.hoveredSlot().getItem()) != -1)
+                                            /*if (ctx.hoveredSlot() != null && ctx.hoveredSlot().getItem().is(ItemTags.BUNDLES) && ctx.holdingItem().isEmpty() && BundleItem.getSelectedItem(ctx.hoveredSlot().getItem()) != -1)
                                                 return Optional.of(Component.translatable("controlify.guide.container.take_from_bundle"));
-                                            //?}
+                                            *///?}
                                             if (ctx.hoveredSlot() != null && ctx.hoveredSlot().getItem().getCount() > 1 && ctx.holdingItem().isEmpty())
                                                 return Optional.of(Component.translatable("controlify.guide.container.take_half"));
                                             if (ctx.hoveredSlot() != null && !ctx.holdingItem().isEmpty() && ctx.hoveredSlot().mayPlace(ctx.holdingItem()))

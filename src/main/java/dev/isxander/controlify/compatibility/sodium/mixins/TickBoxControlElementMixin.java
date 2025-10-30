@@ -1,4 +1,3 @@
-/*? if sodium {*/
 package dev.isxander.controlify.compatibility.sodium.mixins;
 
 import dev.isxander.controlify.compatibility.sodium.SodiumCompat;
@@ -11,9 +10,11 @@ import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(targets = SodiumCompat.SODIUM_PACKAGE + ".client.gui.options.control.TickBoxControl$TickBoxControlElement", remap = false)
 public abstract class TickBoxControlElementMixin implements ComponentProcessorProvider {
-    @Shadow public abstract void toggleControl();
+    @Shadow
+    public abstract void toggleControl();
 
-    @Unique private final ComponentProcessor controlify$componentProcessor
+    @Unique
+    private final ComponentProcessor controlify$componentProcessor
             = new TickBoxControlProcessor(this::toggleControl);
 
     @Override
@@ -21,4 +22,4 @@ public abstract class TickBoxControlElementMixin implements ComponentProcessorPr
         return controlify$componentProcessor;
     }
 }
-/*?}*/
+

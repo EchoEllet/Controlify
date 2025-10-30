@@ -17,10 +17,7 @@ import java.util.function.Function;
 
 public final class PlatformClientUtil {
     private static final PlatformClientUtilImpl IMPL =
-            //? if fabric
-            new dev.isxander.controlify.platform.client.fabric.FabricPlatformClientImpl();
-            //? if neoforge
-            /*new dev.isxander.controlify.platform.client.neoforge.NeoforgePlatformClientImpl();*/
+            new dev.isxander.controlify.platform.client.neoforge.NeoforgePlatformClientImpl();
 
     public static void registerClientTickStarted(TickEvent event) {
         IMPL.registerClientTickStarted(event);

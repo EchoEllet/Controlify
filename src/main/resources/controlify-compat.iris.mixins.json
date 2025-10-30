@@ -12,5 +12,6 @@
   ],
   "mixins": [
     "BaseOptionElementWidgetMixin"
-  ]
+  ],
+  "refmap": "controlify.refmap.json"
 }

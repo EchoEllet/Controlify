@@ -51,14 +51,14 @@ public final class RadialIcons {
 
     public static ResourceLocation getEffect(
             /*? if >1.20.4 {*/
-            Holder<MobEffect> effectHolder
-            /*?} else {*/
-            /*MobEffect effect
-            *//*?}*/
+            /*Holder<MobEffect> effectHolder
+            *//*?} else {*/
+            MobEffect effect
+            /*?}*/
     ) {
         /*? if >1.20.4 {*/
-        MobEffect effect = effectHolder.value();
-        /*?}*/
+        /*MobEffect effect = effectHolder.value();
+        *//*?}*/
         return prefixLocation("effect", BuiltInRegistries.MOB_EFFECT.getKey(effect));
     }
 
@@ -80,10 +80,10 @@ public final class RadialIcons {
             ResourceKey<MobEffect> key = entry.getKey();
 
             /*? if >1.20.4 {*/
-            Holder<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(entry.getValue());
-            /*?} else {*/
-            /*MobEffect effect = entry.getValue();
-            *//*?}*/
+            /*Holder<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(entry.getValue());
+            *//*?} else {*/
+            MobEffect effect = entry.getValue();
+            /*?}*/
 
             TextureAtlasSprite sprite = mobEffectTextureManager.get(effect);
 

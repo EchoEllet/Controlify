@@ -22,10 +22,10 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
     protected abstract boolean isMoving();
 
     //? if >=1.21.2 {
-    @Shadow public net.minecraft.client.player.ClientInput input;
-    //?} else {
-    /*@Shadow public net.minecraft.client.player.Input input;
-    *///?}
+    /*@Shadow public net.minecraft.client.player.ClientInput input;
+    *///?} else {
+    @Shadow public net.minecraft.client.player.Input input;
+    //?}
 
     @Unique private ContinuousRumbleEffect slowBlockRumble = null;
 
@@ -38,12 +38,12 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
             at = @At(
                     value = "INVOKE",
                     //? if >=1.21.4 {
-                    target = "Lnet/minecraft/client/player/ClientInput;tick()V"
-                    //?} else if >=1.21.2 {
+                    /*target = "Lnet/minecraft/client/player/ClientInput;tick()V"
+                    *///?} else if >=1.21.2 {
                     /*target = "Lnet/minecraft/client/player/ClientInput;tick(ZF)V"
                     *///?} else {
-                    /*target = "Lnet/minecraft/client/player/Input;tick(ZF)V"
-                    *///?}
+                    target = "Lnet/minecraft/client/player/Input;tick(ZF)V"
+                    //?}
             )
     )
     private void manageSlowBlockRumble(CallbackInfo ci) {

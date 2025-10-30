@@ -51,16 +51,16 @@ import java.util.List;
 public class ControllerCarouselScreen extends Screen implements ScreenControllerEventListener {
     public static final ResourceLocation CHECKMARK =
             /*? if >=1.20.3 {*/
-            CUtil.mcRl("icon/checkmark");
-            /*?} else {*/
-            /*CUtil.mcRl("textures/gui/checkmark.png");
-            *//*?}*/
+            /*CUtil.mcRl("icon/checkmark");
+            *//*?} else {*/
+            CUtil.mcRl("textures/gui/checkmark.png");
+            /*?}*/
     public static final ResourceLocation DANGER =
             /*? if >=1.20.3 {*/
-            CUtil.mcRl("icon/unseen_notification");
-            /*?} else {*/
-            /*CUtil.mcRl("textures/gui/unseen_notification.png");
-            *//*?}*/
+            /*CUtil.mcRl("icon/unseen_notification");
+            *//*?} else {*/
+            CUtil.mcRl("textures/gui/unseen_notification.png");
+            /*?}*/
 
     private final Screen parent;
     private int footerY;
@@ -179,17 +179,17 @@ public class ControllerCarouselScreen extends Screen implements ScreenController
         /*? if =1.20.4 {*/
         /*renderBackground(graphics, mouseX, mouseY, delta);
         *//*?} elif <1.20.4 {*/
-        /*renderBackground(graphics);
-        *//*?}*/
+        renderBackground(graphics);
+        /*?}*/
         super.render(graphics, mouseX, mouseY, delta);
 
         Blit.blitTex(
                 graphics,
                 /*? if >1.20.4 {*/
-                minecraft.level == null ? Screen.FOOTER_SEPARATOR : Screen.INWORLD_FOOTER_SEPARATOR,
-                /*?} else {*/
-                /*CreateWorldScreen.FOOTER_SEPERATOR,
-                *//*?}*/
+                /*minecraft.level == null ? Screen.FOOTER_SEPARATOR : Screen.INWORLD_FOOTER_SEPARATOR,
+                *//*?} else {*/
+                CreateWorldScreen.FOOTER_SEPERATOR,
+                /*?}*/
                 0, footerY,
                 0.0F, 0.0F,
                 this.width, 2,
@@ -205,11 +205,11 @@ public class ControllerCarouselScreen extends Screen implements ScreenController
     public void renderBackground(
             GuiGraphics graphics
             /*? if >=1.20.4 {*/
-            , int i, int j, float f
-            /*?}*/
+            /*, int i, int j, float f
+            *//*?}*/
     ) {
         /*? if >1.20.4 {*/
-        super.renderBackground(graphics, i, j, f);
+        /*super.renderBackground(graphics, i, j, f);
 
         Blit.blitTex(
                 graphics,
@@ -219,13 +219,13 @@ public class ControllerCarouselScreen extends Screen implements ScreenController
                 width, footerY,
                 32, 32
         );
-        /*?} else {*/
-        /*graphics.setColor(0.5f, 0.5f, 0.5f, 1f);
+        *//*?} else {*/
+        graphics.setColor(0.5f, 0.5f, 0.5f, 1f);
         graphics.blit(CreateWorldScreen.LIGHT_DIRT_BACKGROUND, 0, 0, 0, 0f, 0f, this.width, footerY, 32, 32);
         graphics.setColor(1f, 1f, 1f, 1f);
 
         graphics.blit(CreateWorldScreen.LIGHT_DIRT_BACKGROUND, 0, footerY, 0, 0f, 0f, this.width, this.height - footerY, 32, 32);
-        *//*?}*/
+        /*?}*/
 
     }
 

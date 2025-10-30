@@ -29,8 +29,8 @@ public abstract class MinecraftMixin implements InitialScreenRegistryDuck {
     @Shadow public abstract void setScreen(@Nullable Screen screen);
 
     //? if >=1.21.2 {
-    @Shadow public abstract net.minecraft.client.DeltaTracker getDeltaTracker();
-    //?} elif >1.20.6 {
+    /*@Shadow public abstract net.minecraft.client.DeltaTracker getDeltaTracker();
+    *///?} elif >1.20.6 {
     /*@Shadow public abstract net.minecraft.client.DeltaTracker getTimer();
 
     @Unique
@@ -38,17 +38,17 @@ public abstract class MinecraftMixin implements InitialScreenRegistryDuck {
         return getTimer();
     }
     *///?} else {
-    /*@Shadow public abstract float getDeltaFrameTime();
-    *///?}
+    @Shadow public abstract float getDeltaFrameTime();
+    //?}
 
     @Shadow @Final public MouseHandler mouseHandler;
     @Shadow @Nullable public Screen screen;
 
     //? if >1.20.1 {
-    @Shadow
-    public abstract void emergencySaveAndCrash(CrashReport crashReport);
-    //?} else {
     /*@Shadow
+    public abstract void emergencySaveAndCrash(CrashReport crashReport);
+    *///?} else {
+    @Shadow
     public abstract void emergencySave();
 
     @Shadow
@@ -60,7 +60,7 @@ public abstract class MinecraftMixin implements InitialScreenRegistryDuck {
         emergencySave();
         Minecraft.crash(filled);
     }
-    *///?}
+    //?}
 
     @Unique private final List<Function<Runnable, Screen>> initialScreenCallbacks = new ArrayList<>();
     @Unique private boolean initialScreensHappened = false;
@@ -100,10 +100,10 @@ public abstract class MinecraftMixin implements InitialScreenRegistryDuck {
     }
 
     /*? if >1.20.4 {*/
-    @Inject(method = "runTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MouseHandler;handleAccumulatedMovement()V"))
-    /*?} else {*/
-    /*@Inject(method = "runTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MouseHandler;turnPlayer()V"))
-    *//*?}*/
+    /*@Inject(method = "runTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MouseHandler;handleAccumulatedMovement()V"))
+    *//*?} else {*/
+    @Inject(method = "runTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MouseHandler;turnPlayer()V"))
+    /*?}*/
     private void doPlayerLook(boolean tick, CallbackInfo ci) {
         Controlify.instance().inGameInputHandler().ifPresent(ih -> ih.processPlayerLook(getTickDelta()));
     }
@@ -126,10 +126,10 @@ public abstract class MinecraftMixin implements InitialScreenRegistryDuck {
             at = @At(
                     value = "INVOKE",
                     /*? if >1.20.6 {*/
-                    target = "Lnet/minecraft/client/renderer/GameRenderer;render(Lnet/minecraft/client/DeltaTracker;Z)V"
-                    /*?} else {*/
-                    /*target = "Lnet/minecraft/client/renderer/GameRenderer;render(FJZ)V"
-                    *//*?}*/
+                    /*target = "Lnet/minecraft/client/renderer/GameRenderer;render(Lnet/minecraft/client/DeltaTracker;Z)V"
+                    *//*?} else {*/
+                    target = "Lnet/minecraft/client/renderer/GameRenderer;render(FJZ)V"
+                    /*?}*/
             )
     )
     private void tickAnimator(boolean tick, CallbackInfo ci) {
@@ -137,28 +137,28 @@ public abstract class MinecraftMixin implements InitialScreenRegistryDuck {
     }
 
     /*? if >1.20.1 {*/
-    @Inject(method = "addInitialScreens", at = @At("TAIL"))
+    /*@Inject(method = "addInitialScreens", at = @At("TAIL"))
     private void injectCustomInitialScreens(List<Function<Runnable, Screen>> output, CallbackInfo ci) {
         output.addAll(initialScreenCallbacks);
         initialScreensHappened = true;
     }
-    /*?}*/
+    *//*?}*/
 
     @Unique
     private float getTickDelta() {
         /*? if >1.20.6 {*/
-        return getDeltaTracker().getGameTimeDeltaTicks();
-        /*?} else {*/
-        /*return getDeltaFrameTime();
-        *//*?}*/
+        /*return getDeltaTracker().getGameTimeDeltaTicks();
+        *//*?} else {*/
+        return getDeltaFrameTime();
+        /*?}*/
     }
 
     @Override
     public void controlify$registerInitialScreen(Function<Runnable, Screen> screenFactory) {
         boolean doNow = initialScreensHappened;
         /*? if <=1.20.1 {*/
-        /*doNow = true;
-        *//*?}*/
+        doNow = true;
+        /*?}*/
 
         if (doNow) {
             Screen lastScreen = this.screen;

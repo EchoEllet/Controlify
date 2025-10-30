@@ -18,10 +18,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(
         //? if >=1.21.2 {
-        LevelEventHandler.class
-        //?} else {
-        /*LevelRenderer.class
-        *///?}
+        /*LevelEventHandler.class
+        *///?} else {
+        LevelRenderer.class
+        //?}
 )
 public class LevelRendererMixin {
     @Inject(method = "levelEvent", at = @At("HEAD"))

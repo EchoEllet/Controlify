@@ -1,4 +1,3 @@
-//? if sodium {
 package dev.isxander.controlify.compatibility.sodium.mixins;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
@@ -6,6 +5,7 @@ import dev.isxander.controlify.api.bind.InputBinding;
 import dev.isxander.controlify.compatibility.sodium.SodiumCompat;
 import dev.isxander.controlify.gui.ButtonGuideRenderer;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import me.jellysquid.mods.sodium.client.gui.widgets.FlatButtonWidget;
 import net.minecraft.network.chat.Component;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,8 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Map;
 import java.util.Optional;
-
-import /*$ sodium-package >>*/ net.caffeinemc.mods.sodium .client.gui.widgets.FlatButtonWidget;
 
 @Mixin(value = FlatButtonWidget.class, remap = false)
 public class FlatButtonWidgetMixin implements ButtonGuideRenderer<FlatButtonWidget> {
@@ -56,7 +54,7 @@ public class FlatButtonWidgetMixin implements ButtonGuideRenderer<FlatButtonWidg
             return actualLabel;
 
         return getBind().map(bind -> controllerMessages
-                .computeIfAbsent(bind, b -> renderData.getControllerMessage(b, actualLabel)))
+                        .computeIfAbsent(bind, b -> renderData.getControllerMessage(b, actualLabel)))
                 .orElse(actualLabel);
     }
 
@@ -80,4 +78,3 @@ public class FlatButtonWidgetMixin implements ButtonGuideRenderer<FlatButtonWidg
         this.controllerMessages.clear();
     }
 }
-//?}

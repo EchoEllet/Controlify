@@ -18,7 +18,7 @@ public class ConnectScreenMixin {
             Minecraft client,
             ServerAddress address, @Nullable ServerData serverInfo,
             //? if >1.20.4
-            @Nullable net.minecraft.client.multiplayer.TransferState transferState,
+            /*@Nullable net.minecraft.client.multiplayer.TransferState transferState,*/
             CallbackInfo ci
     ) {
         Controlify.instance().notifyNewServer(serverInfo);

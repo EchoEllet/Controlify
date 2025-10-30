@@ -1,4 +1,3 @@
-//? if iris {
 package dev.isxander.controlify.compatibility.iris.mixins;
 
 import dev.isxander.controlify.compatibility.iris.screenop.BaseOptionElementComponentProcessor;
@@ -12,11 +11,16 @@ import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(value = BaseOptionElementWidget.class, remap = false)
 public abstract class BaseOptionElementWidgetMixin implements ComponentProcessorProvider {
-    @Shadow public abstract boolean applyPreviousValue();
-    @Shadow public abstract boolean applyNextValue();
+    @Shadow
+    public abstract boolean applyPreviousValue();
 
-    @Shadow protected NavigationController navigation;
-    @Unique private final BaseOptionElementComponentProcessor processor
+    @Shadow
+    public abstract boolean applyNextValue();
+
+    @Shadow
+    protected NavigationController navigation;
+    @Unique
+    private final BaseOptionElementComponentProcessor processor
             = new BaseOptionElementComponentProcessor(this::cycle);
 
     @Override
@@ -33,4 +37,3 @@ public abstract class BaseOptionElementWidgetMixin implements ComponentProcessor
     }
 
 }
-//?}

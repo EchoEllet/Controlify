@@ -1,5 +1,5 @@
-//? if neoforge {
-/*package dev.isxander.controlify.platform.main.neoforge;
+//? if forge {
+package dev.isxander.controlify.platform.main.neoforge;
 
 import dev.isxander.controlify.api.entrypoint.ControlifyEntrypoint;
 import dev.isxander.controlify.platform.Environment;
@@ -11,15 +11,17 @@ import dev.isxander.controlify.platform.network.ControlifyPacketCodec;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.ModLoadingContext;
-import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.fml.loading.FMLPaths;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.commons.lang3.NotImplementedException;
 
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -27,17 +29,20 @@ import java.util.ServiceLoader;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import static net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER;
+import static net.minecraftforge.forgespi.language.IModInfo.DependencySide.CLIENT;
+
 public class NeoforgePlatformMainImpl implements PlatformMainUtilImpl {
     @Override
     public void registerCommandRegistrationCallback(CommandRegistrationCallbackEvent callback) {
-        NeoForge.EVENT_BUS.<RegisterCommandsEvent>addListener(e -> {
+        MinecraftForge.EVENT_BUS.<RegisterCommandsEvent>addListener(e -> {
             callback.onRegister(e.getDispatcher(), e.getBuildContext(), e.getCommandSelection());
         });
     }
 
     @Override
     public void registerInitPlayConnectionEvent(PlayerJoinedEvent event) {
-        NeoForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(e -> {
+        MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(e -> {
             event.onInit((ServerPlayer) e.getEntity());
         });
     }
@@ -87,11 +92,14 @@ public class NeoforgePlatformMainImpl implements PlatformMainUtilImpl {
 
     @Override
     public <T> Supplier<T> deferredRegister(Registry<T> registry, ResourceLocation id, Supplier<? extends T> registrant) {
-        return DeferredRegister.create(registry, id.getNamespace()).register(id.getPath(), registrant);
+        throw new NotImplementedException("This method has not been ported to Forge 1.20.1 as it's not used anywhere.");
+        // Original NeoForge line:
+//        return DeferredRegister.create(registry, id.getNamespace()).register(id.getPath(), registrant);
     }
 
+    @SuppressWarnings("removal")
     private IEventBus getModEventBus() {
-        return ModLoadingContext.get().getActiveContainer().getEventBus();
+        return  FMLJavaModLoadingContext.get().getModEventBus();
     }
 }
-*///?}
+//?}

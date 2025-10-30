@@ -13,5 +13,6 @@
   "mixins": [
     "KeyEventsAccessor",
     "PTTKeyHandlerMixin"
-  ]
+  ],
+  "refmap": "controlify.refmap.json"
 }

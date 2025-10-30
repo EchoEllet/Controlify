@@ -1,5 +1,5 @@
 //? if >=1.21.2 {
-package dev.isxander.controlify.screenop.compat.vanilla;
+/*package dev.isxander.controlify.screenop.compat.vanilla;
 
 import dev.isxander.controlify.Controlify;
 import dev.isxander.controlify.bindings.ControlifyBindings;
@@ -40,11 +40,11 @@ public class BundleItemSlotControllerAction {
                     return true;
                 }
 
-                /*
+                /^
                 Bundle grid is organised where the first row is the incomplete row and is RTL,
                 - - 0 1
                 2 3 4 5
-                 */
+                 ^/
                 int rowSize = BundleItem.MAX_SHOWN_GRID_ITEMS_X;
                 int colSize = Math.min(Mth.ceil(uniqueItems / (float) rowSize), BundleItem.MAX_SHOWN_GRID_ITEMS_Y);
                 int incompleteRowSize = uniqueItems % rowSize;
@@ -73,4 +73,4 @@ public class BundleItemSlotControllerAction {
         void accept(ItemStack stack, int hoveredSlot, int selectedIndex);
     }
 }
-//?}
+*///?}

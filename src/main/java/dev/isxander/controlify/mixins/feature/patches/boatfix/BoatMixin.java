@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(
         //? if >=1.21.2 {
-        net.minecraft.world.entity.vehicle.AbstractBoat.class
-        //?} else {
-        /*net.minecraft.world.entity.vehicle.Boat.class
-        *///?}
+        /*net.minecraft.world.entity.vehicle.AbstractBoat.class
+        *///?} else {
+        net.minecraft.world.entity.vehicle.Boat.class
+        //?}
 )
 public abstract class BoatMixin implements AnalogBoatInput {
     @Shadow private float deltaRotation;
@@ -32,10 +32,10 @@ public abstract class BoatMixin implements AnalogBoatInput {
     @Unique
     private static final String TARGET_CLASS =
             //? if >=1.21.2 {
-            "Lnet/minecraft/world/entity/vehicle/AbstractBoat";
-            //?} else {
-            /*"Lnet/minecraft/world/entity/vehicle/Boat";
-            *///?}
+            /*"Lnet/minecraft/world/entity/vehicle/AbstractBoat";
+            *///?} else {
+            "Lnet/minecraft/world/entity/vehicle/Boat";
+            //?}
 
     @Inject(method = "controlBoat", at = @At(value = "INVOKE", target = TARGET_CLASS + ";getYRot()F", ordinal = 0))
     private void rotateBoatAnalog(CallbackInfo ci) {

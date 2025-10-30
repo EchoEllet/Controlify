@@ -18,5 +18,6 @@
     "FlatButtonWidgetMixin",
     "SliderControlElementMixin",
     "TickBoxControlElementMixin"
-  ]
+  ],
+  "refmap": "controlify.refmap.json"
 }

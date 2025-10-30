@@ -14,7 +14,7 @@ public interface SimpleControlifyReloadListener<T> extends ControlifyReloadListe
             PreparableReloadListener.PreparationBarrier helper,
             ResourceManager manager,
             //? if <1.21.2
-            /*ProfilerFiller loadProfiler, ProfilerFiller applyProfiler,*/
+            ProfilerFiller loadProfiler, ProfilerFiller applyProfiler,
             Executor loadExecutor, Executor applyExecutor
     ) {
         return load(manager, loadExecutor).thenCompose(helper::wait).thenCompose(

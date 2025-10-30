@@ -32,14 +32,14 @@ public interface ControlifyVertexConsumer {
 
     static ControlifyVertexConsumer of(VertexConsumer vanilla) {
         //? if >=1.21 {
-        return new Post21VertexConsumer(vanilla);
-        //?} else {
-        /*return new Pre21VertexConsumer(vanilla);
-        *///?}
+        /*return new Post21VertexConsumer(vanilla);
+        *///?} else {
+        return new Pre21VertexConsumer(vanilla);
+        //?}
     }
 
     //? if >=1.21 {
-    class Post21VertexConsumer implements ControlifyVertexConsumer {
+    /*class Post21VertexConsumer implements ControlifyVertexConsumer {
         private final VertexConsumer vertexConsumer;
 
         public Post21VertexConsumer(VertexConsumer vertexConsumer) {
@@ -92,8 +92,8 @@ public interface ControlifyVertexConsumer {
             return vertexConsumer;
         }
     }
-    //?} else {
-    /*class Pre21VertexConsumer implements ControlifyVertexConsumer {
+    *///?} else {
+    class Pre21VertexConsumer implements ControlifyVertexConsumer {
         private final VertexConsumer vertexConsumer;
 
         public Pre21VertexConsumer(VertexConsumer vertexConsumer) {
@@ -147,5 +147,5 @@ public interface ControlifyVertexConsumer {
             return vertexConsumer;
         }
     }
-    *///?}
+    //?}
 }

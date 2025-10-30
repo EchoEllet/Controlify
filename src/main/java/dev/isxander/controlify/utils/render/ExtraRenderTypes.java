@@ -10,9 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Function;
 
-public class ExtraRenderTypes /*? if <1.21.2 {*/ /*extends RenderType *//*?}*/ {
+public class ExtraRenderTypes /*? if <1.21.2 {*/ extends RenderType /*?}*/ {
     //? if <1.21.2 {
-    /*private static final Function<ResourceLocation, RenderType> GUI_TEXTURED = Util.memoize(
+    private static final Function<ResourceLocation, RenderType> GUI_TEXTURED = Util.memoize(
             resourceLocation -> RenderType.create(
                     "controlify:gui_textured",
                     DefaultVertexFormat.POSITION_TEX_COLOR,
@@ -31,13 +31,13 @@ public class ExtraRenderTypes /*? if <1.21.2 {*/ /*extends RenderType *//*?}*/ {
     public ExtraRenderTypes(String name, VertexFormat format, VertexFormat.Mode mode, int bufferSize, boolean affectsCrumbling, boolean sortOnUpload, Runnable setupState, Runnable clearState) {
         super(name, format, mode, bufferSize, affectsCrumbling, sortOnUpload, setupState, clearState);
     }
-    *///?}
+    //?}
 
     public static RenderType guiTextured(ResourceLocation texture) {
         //? if >=1.21.2 {
-        return RenderType.guiTextured(texture);
-        //?} else {
-        /*return GUI_TEXTURED.apply(texture);
-        *///?}
+        /*return RenderType.guiTextured(texture);
+        *///?} else {
+        return GUI_TEXTURED.apply(texture);
+        //?}
     }
 }

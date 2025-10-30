@@ -17,5 +17,6 @@
   ],
   "mixins": [
     "ControllerWidgetAccessor"
-  ]
+  ],
+  "refmap": "controlify.refmap.json"
 }

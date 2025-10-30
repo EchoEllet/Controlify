@@ -19,28 +19,28 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(LocalPlayer.class)
 public class LocalPlayerMixin {
     //? if >=1.21.2 {
-    @Shadow public net.minecraft.client.player.ClientInput input;
-    //?} else {
-    /*@Shadow public net.minecraft.client.player.Input input;
-    *///?}
+    /*@Shadow public net.minecraft.client.player.ClientInput input;
+    *///?} else {
+    @Shadow public net.minecraft.client.player.Input input;
+    //?}
 
     @WrapOperation(
             method = "rideTick",
             at = @At(
                     value = "INVOKE",
                     //? if >=1.21.2 {
-                    target = "Lnet/minecraft/world/entity/vehicle/AbstractBoat;setInput(ZZZZ)V"
-                    //?} else {
-                    /*target = "Lnet/minecraft/world/entity/vehicle/Boat;setInput(ZZZZ)V"
-                    *///?}
+                    /*target = "Lnet/minecraft/world/entity/vehicle/AbstractBoat;setInput(ZZZZ)V"
+                    *///?} else {
+                    target = "Lnet/minecraft/world/entity/vehicle/Boat;setInput(ZZZZ)V"
+                    //?}
             )
     )
     private void useAnalogInput(
             //? if >=1.21.2 {
-            net.minecraft.world.entity.vehicle.AbstractBoat boat,
-            //?} else {
-            /*Boat boat,
-            *///?}
+            /*net.minecraft.world.entity.vehicle.AbstractBoat boat,
+            *///?} else {
+            Boat boat,
+            //?}
             boolean pressingLeft, boolean pressingRight, boolean pressingForward, boolean pressingBack,
             Operation<Void> original
     ) {

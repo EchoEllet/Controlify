@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 
 //? if >=1.21.2 {
-import dev.isxander.controlify.controller.ControllerEntity;
+/*import dev.isxander.controlify.controller.ControllerEntity;
 import dev.isxander.controlify.screenop.compat.vanilla.BundleItemSlotControllerAction;
 import dev.isxander.controlify.screenop.compat.vanilla.ItemSlotControllerAction;
 import net.minecraft.client.gui.BundleMouseActions;
@@ -21,7 +21,7 @@ public abstract class BundleMouseActionsMixin implements ItemSlotControllerActio
         return BundleItemSlotControllerAction.onControllerInput(stack, hoveredSlotIndex, controller, this::toggleSelectedBundleItem);
     }
 }
-//?} else {
-/*@Mixin(Minecraft.class)
+*///?} else {
+@Mixin(Minecraft.class)
 public class BundleMouseActionsMixin {}
-*///?}
+//?}

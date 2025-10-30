@@ -99,10 +99,10 @@ public final class RadialItems {
                     },
                     () -> {
                         //? if >=1.21.5 {
-                        mc.player.getInventory().setSelectedSlot(j);
-                        //?} else {
-                        /*mc.player.getInventory().selected = j;
-                        *///?}
+                        /*mc.player.getInventory().setSelectedSlot(j);
+                        *///?} else {
+                        mc.player.getInventory().selected = j;
+                        //?}
                         return true;
                     },
                     CUtil.rl("hotbar_item_select/" + j)
@@ -200,7 +200,7 @@ public final class RadialItems {
                         CUtil.rl("debug/fps")
                 ),
                 //? if >=1.20.3 {
-                new RadialItemRecord(
+                /*new RadialItemRecord(
                         Component.translatable("controlify.radial.debug.overlay_net"),
                         RadialIcons.getIcons().get(RadialIcons.getItem(Items.SCULK_SENSOR)),
                         () -> {
@@ -218,8 +218,8 @@ public final class RadialItems {
                         },
                         CUtil.rl("debug/fps")
                 ),
-                //?} else {
-                /*new RadialItemRecord(
+                *///?} else {
+                new RadialItemRecord(
                         Component.translatable("controlify.radial.debug.overlay_charts"),
                         RadialIcons.getIcons().get(RadialIcons.getItem(Items.REDSTONE)),
                         () -> {
@@ -228,7 +228,7 @@ public final class RadialItems {
                         },
                         CUtil.rl("debug/fps")
                 ),
-                *///?}
+                //?}
         } : new RadialMenuScreen.RadialItem[]{
                 new RadialItemRecord(
                         Component.translatable("controlify.radial.debug.hide_overlay"),
@@ -253,10 +253,10 @@ public final class RadialItems {
         Hotbar hotbar = mc.getHotbarManager().get(hotbarIndex);
 
         /*? if >1.20.4 {*/
-        List<ItemStack> hotbarItems = hotbar.load(mc.player.registryAccess());
-        /*?} else {*/
-        /*List<ItemStack> hotbarItems = hotbar;
-        *//*?}*/
+        /*List<ItemStack> hotbarItems = hotbar.load(mc.player.registryAccess());
+        *//*?} else {*/
+        List<ItemStack> hotbarItems = hotbar;
+        /*?}*/
 
         for (int i = 0; i < 9; i++) {
             ItemStack stack = hotbarItems.get(i);

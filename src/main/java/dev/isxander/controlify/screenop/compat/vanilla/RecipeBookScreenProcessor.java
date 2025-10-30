@@ -18,11 +18,11 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 //? if >=1.21.2
-import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
+/*import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;*/
 import net.minecraft.world.inventory.Slot;
 
 public class RecipeBookScreenProcessor
-        <T extends /*? if >=1.21.2 {*/ AbstractRecipeBookScreen<?> /*?} else {*/ /*AbstractContainerScreen<?> *//*?}*/>
+        <T extends /*? if >=1.21.2 {*/ /*AbstractRecipeBookScreen<?> *//*?} else {*/ AbstractContainerScreen<?> /*?}*/>
         extends AbstractContainerScreenProcessor<T> {
 
     private final RecipeBookScreenAccessor recipeBookScreenAccessor;
@@ -42,7 +42,7 @@ public class RecipeBookScreenProcessor
     protected void handleScreenVMouse(ControllerEntity controller, VirtualMouseHandler vmouse) {
         super.handleScreenVMouse(controller, vmouse);
 
-        RecipeBookComponent/*? if >=1.21.2 {*/<?>/*?}*/ recipeBookComponent = recipeBookScreenAccessor.controlify$getRecipeBookComponent();
+        RecipeBookComponent/*? if >=1.21.2 {*//*<?>*//*?}*/ recipeBookComponent = recipeBookScreenAccessor.controlify$getRecipeBookComponent();
 
         if (!recipeBookComponent.isVisible()) return;
         RecipeBookComponentAccessor componentAccessor = (RecipeBookComponentAccessor) recipeBookComponent;
@@ -79,6 +79,6 @@ public class RecipeBookScreenProcessor
     }
 
     public interface RecipeBookScreenAccessor {
-        RecipeBookComponent/*? if >=1.21.2 {*/<?>/*?}*/ controlify$getRecipeBookComponent();
+        RecipeBookComponent/*? if >=1.21.2 {*//*<?>*//*?}*/ controlify$getRecipeBookComponent();
     }
 }

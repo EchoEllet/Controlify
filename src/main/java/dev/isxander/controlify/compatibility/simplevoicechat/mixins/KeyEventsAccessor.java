@@ -10,4 +10,4 @@ public interface KeyEventsAccessor {
     @Invoker
     boolean invokeCheckConnected();
 }
-/*?}*/
+
