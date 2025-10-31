@@ -120,8 +120,6 @@ dependencies {
     additionalRuntimeClasspath("org.hid4java:hid4java:${project.property('deps.hid4java')}")
     implementation("net.java.dev.jna:jna:5.18.1") // Transitive dependency of hid4java
 
-    implementation(jarJar("org.jetbrains:annotations:24.0.0"))
-
     implementation "org.quiltmc.parsers:json:${project.property('deps.quiltparsers')}"
 
     modImplementation("maven.modrinth:embeddium:0.3.31+mc1.20.1")
