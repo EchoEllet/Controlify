@@ -2,6 +2,9 @@ package dev.isxander.controlify;
 
 import com.mojang.blaze3d.Blaze3D;
 import dev.isxander.controlify.api.ControlifyApi;
+import dev.isxander.controlify.api.bind.ControlifyBindApi;
+import dev.isxander.controlify.api.entrypoint.InitContext;
+import dev.isxander.controlify.api.entrypoint.PreInitContext;
 import dev.isxander.controlify.bindings.BindContext;
 import dev.isxander.controlify.bindings.ControlifyBindApiImpl;
 import dev.isxander.controlify.bindings.ControlifyBindings;
@@ -159,6 +162,16 @@ public class Controlify implements ControlifyApi {
 
         PlatformClientUtil.addHudLayer(CUtil.rl("button_guide"), (graphics, tickDelta) ->
                 inGameButtonGuide().ifPresent(guide -> guide.renderHud(graphics, tickDelta)));
+
+        PlatformMainUtil.applyToControlifyEntrypoint(entrypoint -> {
+            try {
+                entrypoint.onControlifyPreInit(new PreInitContext() {
+                });
+            } catch (Throwable e) {
+                CUtil.LOGGER.error("Failed to run `onControlifyPreInit` on Controlify entrypoint: {}", entrypoint.getClass().getName(), e);
+            }
+        });
+        //GuideDomains.freeze();
     }
 
     private void registerBuiltinPack(String id) {
@@ -196,14 +209,6 @@ public class Controlify implements ControlifyApi {
                     ScreenProcessorProvider.provide(screen).render(controller, graphics, tickDelta);
                 }));
 
-        PlatformMainUtil.applyToControlifyEntrypoint(entrypoint -> {
-            try {
-                entrypoint.onControlifyInit(this);
-            } catch (Throwable e) {
-                CUtil.LOGGER.error("Failed to run `onControlifyInit` on Controlify entrypoint: {}", entrypoint.getClass().getName(), e);
-            }
-        });
-
         if (config().globalSettings().isQuietMode()) {
             // Use GLFW to probe for controllers without asking for natives
             boolean controllersConnected = GLFWControllerManager.areControllersConnected();
@@ -233,6 +238,24 @@ public class Controlify implements ControlifyApi {
         if (this.config().globalSettings().useEnhancedSteamDeckDriver) {
             doSteamDeckChecks();
         }
+
+        PlatformMainUtil.applyToControlifyEntrypoint(entrypoint -> {
+            try {
+                entrypoint.onControlifyInit(new InitContext() {
+                    @Override
+                    public ControlifyBindApi bindings() {
+                        return ControlifyBindApiImpl.INSTANCE;
+                    }
+
+                    @Override
+                    public ControlifyApi controlify() {
+                        return Controlify.this;
+                    }
+                });
+            } catch (Throwable e) {
+                CUtil.LOGGER.error("Failed to run `onControlifyInit` on Controlify entrypoint: {}", entrypoint.getClass().getName(), e);
+            }
+        });
     }
 
     private void doSteamDeckChecks() {

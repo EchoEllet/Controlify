@@ -24,6 +24,8 @@ public class MerchantScreenMixin {
      */
     @ModifyExpressionValue(method = "mouseScrolled", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/inventory/MerchantScreen;canScroll(I)Z"))
     // target is just before we calculate new scroll offset
+    // TODO: (PORT): Backport this commit if needed:
+    // https://github.com/isXander/Controlify/commit/cb875cbd22c2b7d23369f110419dcb0bb46e020b
     private boolean accumulateScrolling(boolean canScroll, @Local(ordinal = 2, argsOnly = true) LocalDoubleRef scrollYRef) {
         if (canScroll) {
             // we want to target the beginning of the inner if statement,
