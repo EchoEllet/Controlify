@@ -155,6 +155,7 @@ publishing {
     publications {
         register('mavenJava', MavenPublication) {
             from components.java
+            artifactId = 'controlify-forgified'
         }
     }
     repositories {
