@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[1,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/EchoEllet/Controlify/issues"
 license = "${mod_license}"
 
 [[mods]]

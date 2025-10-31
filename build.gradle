@@ -14,7 +14,8 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = mod_id
+    archivesName = "$mod_id-forgified"
+    version = "${mod_version}-mc${minecraft_version}-forge"
 }
 
 java {
@@ -107,7 +108,8 @@ dependencies {
     modCompileOnly("maven.modrinth:simple-voice-chat:forge-1.20.1-2.6.6")
     modImplementation("dev.isxander:yet-another-config-lib:3.6.6+1.20.1-forge")
 
-    // Bundles these dependencies in the JAR file (https://docs.minecraftforge.net/en/fg-5.x/dependencies/#non-minecraft-dependencies)
+    // Bundles these dependencies in the JAR file (https://docs.neoforged.net/toolchain/docs/dependencies/jarinjar/)
+
     implementation(jarJar("dev.isxander:libsdl4j:${project.property('deps.sdl3Target')}-${project.property('deps.sdl34jBuild')}"))
     additionalRuntimeClasspath("dev.isxander:libsdl4j:${project.property('deps.sdl3Target')}-${project.property('deps.sdl34jBuild')}")
 
