@@ -1,0 +1,80 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.echoellet",
+    "module": "controlify-forgified",
+    "version": "2.1.2-mc1.20.1-forge",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.14.3"
+    }
+  },
+  "variants": [
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "controlify-forgified-2.1.2-mc1.20.1-forge-sources.jar",
+          "url": "controlify-forgified-2.1.2-mc1.20.1-forge-sources.jar",
+          "size": 1976209,
+          "sha512": "d4a67356e86aedcb492769ea7a6af6c2b72f85af857f80f2ef86b89d5a7e09c3b27261b785718af06242bf121a14b1b7e4e132446968b630bf62a695a74d38b1",
+          "sha256": "a585559aa1b4b869cedf1d512a5bb30e0b7d52ba98591942c981f70b3a86c25d",
+          "sha1": "f0457b5d1053be2e32a87affa65116a91ed53cc3",
+          "md5": "3b16f4b54690c7d7c2e60251623abfd6"
+        }
+      ]
+    },
+    {
+      "name": "reobfRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "controlify-forgified-2.1.2-mc1.20.1-forge.jar",
+          "url": "controlify-forgified-2.1.2-mc1.20.1-forge.jar",
+          "size": 6967090,
+          "sha512": "7d899427e3af396c1a740e976e62320ff2abba62e1ca83df2eb75d3bdeb707af006d88016f057fa9ccf46a3219c6dc85f8e0ed7feeabc641420f11e264864ab3",
+          "sha256": "7c531302c3b8f066e57ca7d8abcedff49dc895ca707b45a9c4dbad99ebbd3d39",
+          "sha1": "1648f2655ff0a73fee8abe7d3a98819218d4dc24",
+          "md5": "005982ff5a05d3905e04b30ab0bf42ea"
+        }
+      ]
+    },
+    {
+      "name": "reobfApiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "controlify-forgified-2.1.2-mc1.20.1-forge.jar",
+          "url": "controlify-forgified-2.1.2-mc1.20.1-forge.jar",
+          "size": 6967090,
+          "sha512": "7d899427e3af396c1a740e976e62320ff2abba62e1ca83df2eb75d3bdeb707af006d88016f057fa9ccf46a3219c6dc85f8e0ed7feeabc641420f11e264864ab3",
+          "sha256": "7c531302c3b8f066e57ca7d8abcedff49dc895ca707b45a9c4dbad99ebbd3d39",
+          "sha1": "1648f2655ff0a73fee8abe7d3a98819218d4dc24",
+          "md5": "005982ff5a05d3905e04b30ab0bf42ea"
+        }
+      ]
+    }
+  ]
+}
