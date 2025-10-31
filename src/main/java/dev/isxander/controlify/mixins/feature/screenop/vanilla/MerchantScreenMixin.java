@@ -24,7 +24,7 @@ public class MerchantScreenMixin {
      */
     @ModifyExpressionValue(method = "mouseScrolled", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/inventory/MerchantScreen;canScroll(I)Z"))
     // target is just before we calculate new scroll offset
-    private boolean accumulateScrolling(boolean canScroll, @Local(ordinal = 3, argsOnly = true) LocalDoubleRef scrollYRef) {
+    private boolean accumulateScrolling(boolean canScroll, @Local(ordinal = 2, argsOnly = true) LocalDoubleRef scrollYRef) {
         if (canScroll) {
             // we want to target the beginning of the inner if statement,
             // so just check if the condition is true and do our stuff there
@@ -54,7 +54,7 @@ public class MerchantScreenMixin {
      * Reset the accumulated scroll if it is consumed by the scroll offset
      */
     @ModifyExpressionValue(method = "mouseScrolled", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(III)I"))
-    private int resetAccumulatedScroll(int original, @Local(ordinal = 3, argsOnly = true) double scrollY) {
+    private int resetAccumulatedScroll(int original, @Local(ordinal = 2, argsOnly = true) double scrollY) {
         // This was copied from the mouseScrolled method
         int relativeScroll = (int) ((double) this.scrollOff - scrollY);
 
