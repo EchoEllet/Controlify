@@ -27,6 +27,7 @@ import dev.isxander.controlify.utils.CUtil;
 import dev.isxander.controlify.utils.log.ControlifyLogger;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.lang3.SerializationException;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -87,46 +88,57 @@ public class ControllerEntity extends ECSEntityImpl {
         return driver;
     }
 
+    @Contract(pure = true)
     public Optional<InputComponent> input() {
         return this.getComponent(InputComponent.ID);
     }
 
+    @Contract(pure = true)
     public Optional<RumbleComponent> rumble() {
         return this.getComponent(RumbleComponent.ID);
     }
 
+    @Contract(pure = true)
     public Optional<TriggerRumbleComponent> triggerRumble() {
         return this.getComponent(TriggerRumbleComponent.ID);
     }
 
+    @Contract(pure = true)
     public Optional<GyroComponent> gyro() {
         return this.getComponent(GyroComponent.ID);
     }
 
+    @Contract(pure = true)
     public Optional<TouchpadComponent> touchpad() {
         return this.getComponent(TouchpadComponent.ID);
     }
 
+    @Contract(pure = true)
     public Optional<BatteryLevelComponent> batteryLevel() {
         return this.getComponent(BatteryLevelComponent.ID);
     }
 
+    @Contract(pure = true)
     public Optional<HDHapticComponent> hdHaptics() {
         return this.getComponent(HDHapticComponent.ID);
     }
 
+    @Contract(pure = true)
     public Optional<SimpleHapticComponent> simpleHaptics() {
         return this.getComponent(SimpleHapticComponent.ID);
     }
 
+    @Contract(pure = true)
     public Optional<DualSenseComponent> dualSense() {
         return this.getComponent(DualSenseComponent.ID);
     }
 
+    @Contract(pure = true)
     public IConfig<GenericControllerConfig> genericConfig() {
         return this.<IConfig<GenericControllerConfig>>getComponent(GenericControllerConfig.ID).orElseThrow();
     }
 
+    @Contract(pure = true)
     public Optional<IConfig<GamepadControllerConfig>> gamepadConfig() {
         return this.getComponent(GamepadControllerConfig.ID);
     }
