@@ -26,11 +26,11 @@
         {
           "name": "controlify-forgified-2.1.2-mc1.20.1-forge-sources.jar",
           "url": "controlify-forgified-2.1.2-mc1.20.1-forge-sources.jar",
-          "size": 1976209,
-          "sha512": "d4a67356e86aedcb492769ea7a6af6c2b72f85af857f80f2ef86b89d5a7e09c3b27261b785718af06242bf121a14b1b7e4e132446968b630bf62a695a74d38b1",
-          "sha256": "a585559aa1b4b869cedf1d512a5bb30e0b7d52ba98591942c981f70b3a86c25d",
-          "sha1": "f0457b5d1053be2e32a87affa65116a91ed53cc3",
-          "md5": "3b16f4b54690c7d7c2e60251623abfd6"
+          "size": 1977920,
+          "sha512": "c4f7132f1d6ad3bfacc6abedc1fcd568396c9535999ab26d51eb2694922e8fb4b6a10dd84d8548c195c3385058ef2647e836a93e38772d1a52440839995def39",
+          "sha256": "a025b396dd8f2d16aa9f326fccb9ae74aacc1ff1cf7cb9ff9b1d3d02b3dcced8",
+          "sha1": "66904c4262637b44533672190122ddf7b338e5a6",
+          "md5": "c0628badfcaabba12e74f0c9d48603c6"
         }
       ]
     },
@@ -47,11 +47,11 @@
         {
           "name": "controlify-forgified-2.1.2-mc1.20.1-forge.jar",
           "url": "controlify-forgified-2.1.2-mc1.20.1-forge.jar",
-          "size": 6967090,
-          "sha512": "7d899427e3af396c1a740e976e62320ff2abba62e1ca83df2eb75d3bdeb707af006d88016f057fa9ccf46a3219c6dc85f8e0ed7feeabc641420f11e264864ab3",
-          "sha256": "7c531302c3b8f066e57ca7d8abcedff49dc895ca707b45a9c4dbad99ebbd3d39",
-          "sha1": "1648f2655ff0a73fee8abe7d3a98819218d4dc24",
-          "md5": "005982ff5a05d3905e04b30ab0bf42ea"
+          "size": 6946940,
+          "sha512": "dfff22afb23f70f51fb81391257c7cfe48f3031a37cdc166a60088e5e99f5d0969dd2f06b80eecb9fb2be1f4e2d06b11de92ea51b47b3a7c24d621b5ae8e436f",
+          "sha256": "3d334a852d36cdb8e812de7fd239148c0ea60447e909e8d40052491f47756ba9",
+          "sha1": "a3b469076c07291596c5a010945fec90c698afc7",
+          "md5": "0281d92fba5a11bafa97cdb59f77bc6e"
         }
       ]
     },
@@ -68,11 +68,11 @@
         {
           "name": "controlify-forgified-2.1.2-mc1.20.1-forge.jar",
           "url": "controlify-forgified-2.1.2-mc1.20.1-forge.jar",
-          "size": 6967090,
-          "sha512": "7d899427e3af396c1a740e976e62320ff2abba62e1ca83df2eb75d3bdeb707af006d88016f057fa9ccf46a3219c6dc85f8e0ed7feeabc641420f11e264864ab3",
-          "sha256": "7c531302c3b8f066e57ca7d8abcedff49dc895ca707b45a9c4dbad99ebbd3d39",
-          "sha1": "1648f2655ff0a73fee8abe7d3a98819218d4dc24",
-          "md5": "005982ff5a05d3905e04b30ab0bf42ea"
+          "size": 6946940,
+          "sha512": "dfff22afb23f70f51fb81391257c7cfe48f3031a37cdc166a60088e5e99f5d0969dd2f06b80eecb9fb2be1f4e2d06b11de92ea51b47b3a7c24d621b5ae8e436f",
+          "sha256": "3d334a852d36cdb8e812de7fd239148c0ea60447e909e8d40052491f47756ba9",
+          "sha1": "a3b469076c07291596c5a010945fec90c698afc7",
+          "md5": "0281d92fba5a11bafa97cdb59f77bc6e"
         }
       ]
     }
