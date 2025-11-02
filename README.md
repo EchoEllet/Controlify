@@ -1,4 +1,4 @@
-# Controlify: Forgified
+# 🎮 Controlify: Forgified
 
 ![Controlify - Controller support for Minecraft Java](https://raw.githubusercontent.com/isXander/Controlify/multiversion/dev/assets/controlify-banner.png)
 
@@ -14,14 +14,14 @@ platform.
 > By "dummy port" we mean that we did not focus on code quality or work polish at all.  
 > That said, the port was not entirely straightforward and still required testing, effort and time.
 
-## Bug Reports
+## 🐞 Bug Reports
 
 This **is not an official port**, so any issues **should not be reported** to the original project.  
 Please [**submit them to this GitHub repository**](https://github.com/EchoEllet/Controlify/issues) instead.
 
 Note that we do **not** plan to add any features such as Controlify split-screen integration.
 
-## Maintenance
+## 🧰 Maintenance
 
 Controlify integration was added in [Epic Fight 21.13.3.2](https://modrinth.com/mod/epic-fight/version/21.13.3.2).  
 The main issue is that this version targets NeoForge 1.21.1, while many Epic Fight addons and modpacks still use Forge
@@ -32,17 +32,21 @@ Once Epic Fight addons move to NeoForge 1.21.1, this port will be deprecated.
 > This port does **not** include Epic Fight integration and does **not** require it—you can use it independently.
 > We recommend starting to adapt to NeoForge or Fabric to avoid breakage, as Controlify only supports those platforms.
 
-## Disclaimer
+## 🏆 Credits
+
+This project is an **unofficial backport** based on the original work by [**isXander**](https://github.com/isXander).  
+Without their valuable work, this port would not exist.
+
+## ⚠️ Disclaimer
 
 > **This mod is NOT AN OFFICIAL MINECRAFT PRODUCT.  
 > It is NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 >
-> **This mod is not affiliated with the Controlify project authors.**
+> **This mod is not affiliated with the Controlify project authors OR [**isXander**](https://github.com/isXander).**
 
-## License
+## 📜 License
 
-The [original Controlify project license](https://github.com/isXander/Controlify/blob/multiversion/dev/LICENSE) remains
-unchanged.
+The [original Controlify project license](https://github.com/isXander/Controlify/blob/multiversion/dev/LICENSE) remains unchanged.
 
 This branch was created
 from [this Controlify commit](https://github.com/isXander/Controlify/commit/b468effcc388ccf6fd9d50e64d9e180f327fca53)
