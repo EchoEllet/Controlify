@@ -1,6 +1,4 @@
-# 🎮 Controlify: Forgified
-
-![Controlify - Controller support for Minecraft Java](https://raw.githubusercontent.com/isXander/Controlify/multiversion/dev/assets/controlify-banner.png)
+# 🎮 Controlify: Forgified (Unofficial)
 
 A quick, simple, unofficial and dummy port of [Controlify](https://modrinth.com/mod/controlify), made for Forge 1.20.1.
 
