@@ -40,7 +40,8 @@ Without their valuable work, this port would not exist.
 > **This mod is NOT AN OFFICIAL MINECRAFT PRODUCT.  
 > It is NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 >
-> **This mod is not affiliated with the Controlify project authors OR [**isXander**](https://github.com/isXander).**
+> **This port is not affiliated with the Controlify project authors OR [**isXander**](https://github.com/isXander).**
+> The logo/icon of this port has been generated using AI.
 
 ## 📜 License
 
