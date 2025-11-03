@@ -4,6 +4,7 @@ plugins {
     // github.com/neoforged/ModDevGradle/blob/main/LEGACY.md
     id 'net.neoforged.moddev.legacyforge' version '2.0.116'
     id 'idea'
+    id "me.modmuss50.mod-publish-plugin" version "1.1.0"
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -230,3 +231,36 @@ END
 Include native libraries for SDL3 in the jar.
  */
 
+publishMods {
+    dryRun = false
+    file = jar.archiveFile
+    additionalFiles.from(tasks.named("sourcesJar").flatMap { it.archiveFile })
+    changelog = project.file('RELEASE_NOTES.md').getText()
+    type = STABLE
+    modLoaders.add("forge")
+    displayName = "[Forge 1.20.1] v${mod_version}"
+
+    curseforge {
+        projectId = "1377533"
+        projectSlug = "controlify-forgified-unofficial"
+        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+        minecraftVersions.add("1.20.1")
+        javaVersions.add(JavaVersion.VERSION_17)
+        clientRequired = true
+        serverRequired = false
+
+        requires("yacl")
+    }
+    modrinth {
+        projectId = "G2K5sLls"
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        minecraftVersions.add("1.20.1")
+
+        requires("yacl")
+    }
+    github {
+        repository = "EchoEllet/controlify"
+        accessToken = providers.environmentVariable("GITHUB_TOKEN")
+        commitish = "1.20.1-forge"
+    }
+}
