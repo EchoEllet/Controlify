@@ -257,6 +257,7 @@ publishMods {
         minecraftVersions.add("1.20.1")
 
         requires("yacl")
+        projectDescription = providers.fileContents(layout.projectDirectory.file("README.md")).asText
     }
     github {
         repository = "EchoEllet/controlify"
