@@ -12,6 +12,19 @@ platform.
 > By "dummy port" we mean that we did not focus on code quality or work polish at all.  
 > That said, the port was not entirely straightforward and still required testing, effort and time.
 
+
+## 📦 **Required Dependencies**
+
+Make sure you have these mods installed:
+
+- [**YetAnotherConfigLib (YACL)**](https://modrinth.com/mod/yacl)
+
+## ❌ **Incompatible mods**
+
+* [lazyyyyy](https://modrinth.com/mod/lazyyyyy) — There is
+  a [known issue](https://github.com/SettingDust/lazyyyyy/issues/88)
+  that causes the game to freeze when using the YACL config screen of Controlify.
+
 ## 🐞 Bug Reports
 
 This **is not an official port**, so any issues **should not be reported** to the original project.  
