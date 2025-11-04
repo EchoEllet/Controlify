@@ -233,7 +233,7 @@ Include native libraries for SDL3 in the jar.
 
 publishMods {
     dryRun = false
-    file = jar.archiveFile
+    file = reobfJar.archiveFile
     additionalFiles.from(tasks.named("sourcesJar").flatMap { it.archiveFile })
     changelog = project.file('RELEASE_NOTES.md').getText()
     type = STABLE
