@@ -180,11 +180,16 @@ mixin {
 
     config "${mod_id}.mixins.json"
     config "${mod_id}-platform.forge.mixins.json"
+    config "${mod_id}-compat.yacl.mixins.json"
+    config "${mod_id}-compat.sodium.mixins.json"
+    config "${mod_id}-compat.reeses-sodium-options.mixins.json"
+    config "${mod_id}-compat.iris.mixins.json"
+    config "${mod_id}-compat.simple-voice-chat.mixins.json"
 }
 
 jar {
     manifest.attributes([
-            "MixinConfigs": "${mod_id}.mixins.json,${mod_id}-platform.forge.mixins.json"
+            "MixinConfigs": "${mod_id}.mixins.json,${mod_id}-platform.forge.mixins.json,${mod_id}-compat.yacl.mixins.json,${mod_id}-compat.sodium.mixins.json,${mod_id}-compat.reeses-sodium-options.mixins.json,${mod_id}-compat.iris.mixins.json,${mod_id}-compat.simple-voice-chat.mixins.json"
     ])
 }
 
