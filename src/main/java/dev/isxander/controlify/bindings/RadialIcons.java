@@ -7,13 +7,13 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.MobEffectTextureManager;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayDeque;
 import java.util.Map;
@@ -23,6 +23,11 @@ public final class RadialIcons {
     private static final Minecraft minecraft = Minecraft.getInstance();
 
     public static final ResourceLocation EMPTY = CUtil.rl("empty");
+    /**
+     * @deprecated Removed in the upstream repo in <a href="https://github.com/isXander/Controlify/pull/702">this PR</a>
+     * and the icon does not exist on Forge mod loader.
+     */
+    @Deprecated
     public static final ResourceLocation FABRIC_ICON = CUtil.rl("fabric-resource-loader-v0", "icon.png");
 
     private static Map<ResourceLocation, RadialIcon> icons = null;
@@ -109,18 +114,23 @@ public final class RadialIcons {
 
     private static Map<ResourceLocation, RadialIcon> registerIcons() {
         Map<ResourceLocation, RadialIcon> map = new Object2ObjectOpenHashMap<>();
+        final ResourceLocation modLoaderIcon = getModLoaderIcon();
 
         map.put(EMPTY, (graphics, x, y, tickDelta) -> {});
-        map.put(FABRIC_ICON, (graphics, x, y, tickDelta) -> {
+        map.put(modLoaderIcon, (graphics, x, y, tickDelta) -> {
             graphics.pose().pushPose();
             graphics.pose().translate(x, y, 0);
             graphics.pose().scale(0.5f, 0.5f, 1f);
-            Blit.blitTex(graphics, FABRIC_ICON, 0, 0, 0, 0, 32, 32, 32, 32);
+            Blit.blitTex(graphics, modLoaderIcon, 0, 0, 0, 0, 32, 32, 32, 32);
             graphics.pose().popPose();
         });
         addItems(map);
         addPotionEffects(map);
 
         return map;
+    }
+
+    public static @NotNull ResourceLocation getModLoaderIcon() {
+        return getItem(net.minecraft.world.item.Items.BOOK);
     }
 }
