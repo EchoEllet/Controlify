@@ -34,7 +34,7 @@ public final class SteamDeckUtil {
         }
         triedToLoad = true;
 
-        if (!DECK_MODE.isGamingMode()) {
+        if (!DECK_MODE.isGamingMode() && DebugProperties.STEAM_DECK_CUSTOM_CEF_URL == null) {
             logger.warn("Device is not a Steam Deck or not in gaming mode, skipping Steam Deck driver initialization.");
             return Optional.empty();
         }
@@ -53,6 +53,10 @@ public final class SteamDeckUtil {
     }
 
     private static boolean isHardwareSteamDeck() {
+        if (true) {
+            logger.error("Skipping Steam Deck checks as steamOS has temporarily broken the enhaned driver.");
+        }
+
         logger.debugLog("Checking if hardware is Steam Deck.");
 
         // even if "Linux" isn't a defacto way to check for all linux distros, it's the value returned on a steam deck
