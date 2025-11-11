@@ -11,7 +11,10 @@ platform.
 
 > By "dummy port" we mean that we did not focus on code quality or work polish at all.  
 > That said, the port was not entirely straightforward and still required testing, effort and time.
-
+>
+> **Note:** Unlike the official Controlify mod,  
+> this backport does **not** support on-screen Controlify data-driven button guides,  
+> as it is an unofficial backport of an older Controlify version.
 
 ## 📦 **Required Dependencies**
 
