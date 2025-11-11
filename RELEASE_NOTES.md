@@ -1,6 +1,6 @@
-- Fix missing texture on custom radial menu icons
 - Fix startup crash on Steam Deck - enhanced driver has been disabled on Steam Deck for
   now.
+  Credit [ItzPeto](https://github.com/ItzPeto) and [Nelku0](https://github.com/Nelku0) for testing using a Steam Deck device.
   This fix has been backported from the original Controlify project by
   isXander.
   See these related commits:
