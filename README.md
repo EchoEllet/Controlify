@@ -1,4 +1,4 @@
-# 🎮 Controlify: Forgified (Unofficial)
+# 🎮 Controlify: Forgified
 
 A simple, and unofficial port of [Controlify](https://modrinth.com/mod/controlify), made for Forge 1.20.1.
 
@@ -21,8 +21,12 @@ Make sure you have these mods installed:
 
 ## ✅ **Compatible mods**
 
-- [Epic Fight](https://modrinth.com/mod/epic-fight) — Fully compatible in collaboration with the Epic Fight project
-  authors.
+- [Epic Fight](https://modrinth.com/mod/epic-fight) — Fully compatible in collaboration 
+  with the Epic Fight project authors.
+  Use the most up-to-date version for the best experience.
+  - [Epic Fight - Invincible Lib](https://www.curseforge.com/minecraft/mc-mods/epic-fight-invincible) 
+  - [Epic Fight - Sword Soaring](https://www.curseforge.com/minecraft/mc-mods/sword-soaring) 
+  - [Weapons of Miracles](https://modrinth.com/mod/weapons-of-miracles) — Works well with Patreon 2.0. 
 - [FancyMenu](https://modrinth.com/mod/fancymenu)
 - [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat)
 
