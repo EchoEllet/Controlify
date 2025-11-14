@@ -21,14 +21,17 @@ Make sure you have these mods installed:
 
 ## ✅ **Compatible mods**
 
+Use the most up-to-date versions for the best experience.
+Some of the compatibilities were added recently.
+
 - [Epic Fight](https://modrinth.com/mod/epic-fight) — Fully compatible in collaboration 
   with the Epic Fight project authors.
-  Use the most up-to-date version for the best experience.
   - [Epic Fight - Invincible Lib](https://www.curseforge.com/minecraft/mc-mods/epic-fight-invincible) 
   - [Epic Fight - Sword Soaring](https://www.curseforge.com/minecraft/mc-mods/sword-soaring) 
   - [Weapons of Miracles](https://modrinth.com/mod/weapons-of-miracles) — Works well with Patreon 2.0. 
 - [FancyMenu](https://modrinth.com/mod/fancymenu)
 - [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat)
+- [P1nero's Dialogue Lib](https://www.curseforge.com/minecraft/mc-mods/p1neros-dialogue-lib)
 
 ## ❌ **Incompatible mods**
 
