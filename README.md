@@ -1,17 +1,14 @@
 # 🎮 Controlify: Forgified (Unofficial)
 
-A quick, simple, unofficial and dummy port of [Controlify](https://modrinth.com/mod/controlify), made for Forge 1.20.1.
+A simple, and unofficial port of [Controlify](https://modrinth.com/mod/controlify), made for Forge 1.20.1.
 
-The goal is to make it "just work" without crashes or critical issues. Use with caution—bugs, crashes, and missing
-features are likely.
+The goal is to make it "just work" without crashes or critical issues.
+The newer features, such as split-screen or data-driven button guides, are not included.
 
 This port is based on [v2.1.2 for Fabric 1.20.1](https://modrinth.com/mod/controlify/version/gYWWawgz), with manual
 backports of some changes from Controlify 2.4.2 and additional adjustments needed to make it work on MinecraftForge
 platform.
 
-> By "dummy port" we mean that we did not focus on code quality or work polish at all.  
-> That said, the port was not entirely straightforward and still required testing, effort and time.
->
 > **Note:** Unlike the official Controlify mod,  
 > this backport does **not** support on-screen Controlify data-driven button guides,  
 > as it is an unofficial backport of an older Controlify version.
@@ -22,11 +19,19 @@ Make sure you have these mods installed:
 
 - [**YetAnotherConfigLib (YACL)**](https://modrinth.com/mod/yacl)
 
+## ✅ **Compatible mods**
+
+- [Epic Fight](https://modrinth.com/mod/epic-fight) — Fully compatible in collaboration with the Epic Fight project
+  authors.
+- [FancyMenu](https://modrinth.com/mod/fancymenu)
+- [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat)
+
 ## ❌ **Incompatible mods**
 
-* [lazyyyyy](https://modrinth.com/mod/lazyyyyy) — There is
+- [lazyyyyy](https://modrinth.com/mod/lazyyyyy) — There is
   a [known issue](https://github.com/SettingDust/lazyyyyy/issues/88)
   that causes the game to freeze when using the YACL config screen of Controlify.
+  Consider trying [this workaround](https://github.com/SettingDust/lazyyyyy/issues/88#issuecomment-3532622474) to fix.
 
 ## 🐞 Bug Reports
 
@@ -37,14 +42,12 @@ Note that we do **not** plan to add any features such as Controlify split-screen
 
 ## 🧰 Maintenance
 
-Controlify integration was added in [Epic Fight 21.13.3.2](https://modrinth.com/mod/epic-fight/version/21.13.3.2).  
-The main issue is that this version targets NeoForge 1.21.1, while many Epic Fight addons and modpacks still use Forge
-1.20.1. This port serves as a hacky workaround to enable controller support on Epic Fight Forge 1.20.1.
+Many mods still target Forge 1.20.1. This port makes Controlify usable in those modpacks,
+though support will eventually end once most mods move to NeoForge.
 
-Once Epic Fight addons move to NeoForge 1.21.1, this port will be deprecated.
-
-> This port does **not** include Epic Fight integration and does **not** require it—you can use it independently.
 > We recommend starting to adapt to NeoForge or Fabric to avoid breakage, as Controlify only supports those platforms.
+> We did not focus much on code quality or work polish.  
+> That said, the port was not entirely straightforward and still required testing, effort, and time.
 
 ## 🏆 Credits
 
