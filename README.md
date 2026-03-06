@@ -1,4 +1,4 @@
-# 🎮 Controlify: Forgified
+# Controlify: Forgified
 
 A simple, and unofficial port of [Controlify](https://modrinth.com/mod/controlify), made for Forge 1.20.1.
 
