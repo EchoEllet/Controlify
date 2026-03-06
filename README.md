@@ -24,18 +24,18 @@ Make sure you have these mods installed:
 Use the most up-to-date versions for the best experience.
 Some of the compatibilities were added recently.
 
-- [Epic Fight](https://modrinth.com/mod/epic-fight) — Fully compatible in collaboration 
+- [Epic Fight](https://modrinth.com/mod/epic-fight) - Fully compatible in collaboration 
   with the Epic Fight project authors.
   - [Epic Fight - Invincible Lib](https://www.curseforge.com/minecraft/mc-mods/epic-fight-invincible) 
   - [Epic Fight - Sword Soaring](https://www.curseforge.com/minecraft/mc-mods/sword-soaring) 
-  - [Weapons of Miracles](https://modrinth.com/mod/weapons-of-miracles) — Works well with Patreon 2.0. 
+  - [Weapons of Miracles](https://modrinth.com/mod/weapons-of-miracles) - Works well with 2.0+. 
 - [FancyMenu](https://modrinth.com/mod/fancymenu)
 - [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat)
 - [P1nero's Dialogue Lib](https://www.curseforge.com/minecraft/mc-mods/p1neros-dialogue-lib)
 
 ## ❌ **Incompatible mods**
 
-- [lazyyyyy](https://modrinth.com/mod/lazyyyyy) — There is
+- [lazyyyyy](https://modrinth.com/mod/lazyyyyy) - There is
   a [known issue](https://github.com/SettingDust/lazyyyyy/issues/88)
   that causes the game to freeze when using the YACL config screen of Controlify.
   Consider trying [this workaround](https://github.com/SettingDust/lazyyyyy/issues/88#issuecomment-3532622474) to fix.
@@ -61,13 +61,15 @@ though support will eventually end once most mods move to NeoForge.
 This project is an **unofficial backport** based on the original work by [**isXander**](https://github.com/isXander).  
 Without their valuable work, this port would not exist.
 
+The logo is designed
+by [Jaycawn](https://github.com/Jaycawn) ([#5](https://github.com/EchoEllet/Controlify/issues/5))
+
 ## ⚠️ Disclaimer
 
 > **This mod is NOT AN OFFICIAL MINECRAFT PRODUCT.  
 > It is NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 >
 > **This port is not affiliated with the Controlify project authors OR [**isXander**](https://github.com/isXander).**
-> The logo/icon of this port has been generated using AI.
 
 ## 📜 License
 
